@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 
 public abstract class ConnectionBDD {
 	
+	//Connection JAVA SE à la base de données
+	
 	/*Connection cnx = null;
 	String url = "jdbc:sqlserver://localhost:1433;databaseName=NOM_BDD";
 	cnx = DriverManager.getConnection(url, "sa", "Pa$$w0rd");
@@ -26,9 +28,7 @@ public abstract class ConnectionBDD {
 	}
 	
 	cnx.close();
-	stmt.close();
-	
-	*/
+	stmt.close();*/
 	
 	
 	private static DataSource ds = null;
