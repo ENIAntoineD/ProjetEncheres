@@ -7,6 +7,6 @@
 <title>Inscription</title>
 </head>
 <body>
-	<h1>S'inscrire</h1>
+	<h1>S'inscrire.</h1>
 </body>
 </html>
