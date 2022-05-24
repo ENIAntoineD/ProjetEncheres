@@ -36,7 +36,7 @@ public abstract class ConnectionBDD {
 	{
 		try {
 			Context cxt = new InitialContext();
-			 ds = (DataSource) cxt.lookup("java:comp/env/jdbc/sqlserver");
+			 ds = (DataSource) cxt.lookup("java:comp/env/jdbc/pool_cnx");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
