@@ -1,7 +1,6 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ProjetEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
-import fr.eni.tpencheres.dal.jdbc.UtilisateurJDBCImpl;
 
 /**
  * Servlet implementation class ServletConnectionUtilisateur
@@ -21,13 +19,6 @@ import fr.eni.tpencheres.dal.jdbc.UtilisateurJDBCImpl;
 public class ServletConnectionUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletConnectionUtilisateur() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
