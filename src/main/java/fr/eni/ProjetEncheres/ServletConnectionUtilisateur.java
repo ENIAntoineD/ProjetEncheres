@@ -49,7 +49,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 			
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
-		rd.forward(request, response);
+		rd.forward(request, response); 
 		
 	}
 
