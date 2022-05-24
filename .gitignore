@@ -1,1 +1,7 @@
-/bin/
+/.classpath
+/.project
+build
+bin
+.class
+.classpath
+/src/main/webapp/META-INF/context.xml
