@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 /.classpath
 /.project
 build
 bin
 .class
-=======
-/bin/
->>>>>>> branch 'main' of https://github.com/ENIAntoineD/ProjetEncheres.git
+.classpath
+/src/main/webapp/META-INF/context.xml
