@@ -30,7 +30,6 @@ public class UtilisateurManager {
 			stmt.setString(2, utilisateur.getPseudo());
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				System.out.println("pseudo");
 				System.out.println("mail");
 				pseudo = true;
 				
