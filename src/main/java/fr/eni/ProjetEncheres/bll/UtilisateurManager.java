@@ -31,6 +31,7 @@ public class UtilisateurManager {
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				System.out.println("pseudo");
+				System.out.println("mail");
 				pseudo = true;
 				
 				
