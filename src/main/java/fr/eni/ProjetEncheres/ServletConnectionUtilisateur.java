@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.ProjetEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
 import fr.eni.tpencheres.dal.jdbc.UtilisateurJDBCImpl;
 
@@ -42,9 +43,10 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur( 23, request.getParameter("pseudo"), "zez", "", "",
 				"", "", "", "", "aaa", false);
-		UtilisateurJDBCImpl userDAO = new UtilisateurJDBCImpl();
+		UtilisateurManager utilisateur = new UtilisateurManager();
 		
-		if (userDAO.SelectByPseudo(user) || userDAO.SelectByEmail(user)) {
+		
+		if (utilisateur.VerificationPseudo(user)) {
 			System.out.println("connecté");
 			
 		}
