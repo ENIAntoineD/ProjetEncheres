@@ -110,7 +110,7 @@ public boolean VerificationMDP(Utilisateur utilisateur) {
 				try {
 					cnx.close();
 				} catch (SQLException e) { 
-					e.printStackTrace();
+					e.printStackTrace(); 
 				}
 			}
 		

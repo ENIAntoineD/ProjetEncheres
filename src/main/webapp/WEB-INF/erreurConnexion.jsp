@@ -14,7 +14,9 @@
 <br>
 <label>Mot de passe :</label><input type="password" name="motdepasse">
 <br>
+<p style="color: red"> Le nom d'utilisateur ou le mot de passe est incorrect    </p>
 <button type="submit">Valider</button>
+
 <a href="">Mot de passe oublié</a>
 </form>
 

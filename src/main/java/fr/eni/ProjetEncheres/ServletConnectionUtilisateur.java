@@ -35,14 +35,25 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 		Utilisateur user = new Utilisateur( 23, request.getParameter("pseudo"), "zez", "", "",
 				"", "", "", "", request.getParameter("motdepasse"), false);
 		UtilisateurManager utilisateur = new UtilisateurManager();
+		boolean connect = false;
 		
 		
 		if (utilisateur.VerificationPseudo(user) && utilisateur.VerificationMDP(user)) {
-			System.out.println("connecté");
+			System.out.println("connecté"); 
+			connect = true;
 			
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
-		rd.forward(request, response); 
+		
+		if (!connect) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
+			rd.forward(request, response); 
+		}
+		
+		else {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
+			rd.forward(request, response); 
+		}
+	
 		
 	}
 
