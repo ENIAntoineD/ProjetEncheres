@@ -58,7 +58,7 @@ public class UtilisateurManager {
 			if (cnx != null) {
 				try {
 					cnx.close();
-				} catch (SQLException e) {
+				} catch (SQLException e) { 
 					e.printStackTrace();
 				}
 			}
