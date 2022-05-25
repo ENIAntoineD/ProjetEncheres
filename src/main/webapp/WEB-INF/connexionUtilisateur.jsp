@@ -9,10 +9,12 @@
 <body>
 <h1>Se connecter:</h1>
 <div>
+
+<a href="">Pas de compte? s'inscrire</a>
 <form method="post"  action="ServletConnectionUtilisateur">
-<label>Pseudo :</label><input type="text" name="pseudo">
+<label>Pseudo :</label><input type="text" name="pseudo" title="Le pseudo doit contenir uniquement des caractères alphanumériques" placeholder ="exemple: DarkMimol256"  pattern="^[a-zA-Z0-9@.]{2,10}$"required="required" autofocus="autofocus">
 <br>
-<label>Mot de passe :</label><input type="password" name="motdepasse">
+<label>Mot de passe :</label><input type="password" placeholder="Exemple : JesuistonPère25" name="motdepasse" required="required">
 <br>
 <button type="submit">Valider</button>
 <a href="">Mot de passe oublié</a>
@@ -20,6 +22,8 @@
 
 
 </div>
+
+<%@ include file="retourAccueil.html" %>
 
 </body>
 </html>

@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import fr.eni.tpencheres.dal.jdbc.*;
+import fr.eni.ProjetEncheres.dal.jdbc.*;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
 
 

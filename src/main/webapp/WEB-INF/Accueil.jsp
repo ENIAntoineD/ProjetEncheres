@@ -9,7 +9,32 @@
     <title>Document</title>
 </head>
 <body>
+
+
     <h1>Accueil</h1>
     <h2>Test</h2>
+    
+    <p> <% if((boolean)session.getAttribute("connecte") == true){ 
+    	
+    	%>
+    	<%@ include file="deconnexion.html" %>
+    	
+    	<%
+    	
+    }
+    else   {    %> 
+    <a href="ServletConnectionUtilisateur">se connecter</a>
+    
+    <%
+    
+    }  %>
+    
+       </p>
+       
+       <form method="get" action="ServletAccueil">
+       <button type ="submit" name="test"> Test</button>
+       </form>
+       
+       
 </body>
 </html>

@@ -1,6 +1,8 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.ProjetEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
@@ -24,6 +27,8 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.setAttribute("connecte", false);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
 		rd.forward(request, response);
 	}
@@ -36,23 +41,36 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 				"", "", "", "", request.getParameter("motdepasse"), false);
 		UtilisateurManager utilisateur = new UtilisateurManager();
 		boolean connect = false;
+		Pattern pattern1 = Pattern.compile("^[a-zA-Z0-9@.]{2,10}$");
+		Matcher m = pattern1.matcher(request.getParameter("pseudo"));
+		boolean testRegex = m.matches();
+		HttpSession session = request.getSession();
 		
-		
-		if (utilisateur.VerificationPseudo(user) && utilisateur.VerificationMDP(user)) {
-			System.out.println("connecté"); 
-			connect = true;
-			
-		}
-		
-		if (!connect) {
+	
+		if (!testRegex) {
+			System.out.println("erreur pattern");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
 			rd.forward(request, response); 
 		}
 		
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
+		if (utilisateur.VerificationPseudo(user) && utilisateur.VerificationMDP(user)) {
+			System.out.println("connecté"); 
+			
+			session.setAttribute("connecte", true);
+			connect = true;
+			
+		}
+		
+		if (!connect && testRegex) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
 			rd.forward(request, response); 
 		}
+		
+		else if(testRegex && connect ){
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+			rd.forward(request, response); 
+		}
+		
 	
 		
 	}
