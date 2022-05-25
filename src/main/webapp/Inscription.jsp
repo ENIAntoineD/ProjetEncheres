@@ -52,7 +52,10 @@
         (\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"</input>
     </div>
     
-    
+<input name="btCréer" type="submit" value="Créer"
+title="Créer votre inscription">
+<input name="btAnnuler" type="reset" value="Annuler"
+title="Annulez votre saisie">
    
     
 </form>
