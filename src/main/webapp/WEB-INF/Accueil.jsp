@@ -9,6 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Titre</h1>
+    <h1>Accueil</h1>
 </body>
 </html>
