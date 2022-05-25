@@ -10,5 +10,6 @@
 </head>
 <body>
     <h1>Accueil</h1>
+    <h2>Test</h2>
 </body>
 </html>
