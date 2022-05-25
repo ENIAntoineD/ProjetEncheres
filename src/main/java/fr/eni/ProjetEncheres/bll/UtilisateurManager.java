@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.ProjetEncheres.bo.Utilisateur;
-import fr.eni.tpencheres.dal.jdbc.ConnectionBDD;
+import fr.eni.ProjetEncheres.dal.jdbc.ConnectionBDD;
 
 public class UtilisateurManager {
 	

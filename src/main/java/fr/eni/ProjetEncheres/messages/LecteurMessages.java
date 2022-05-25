@@ -1,4 +1,4 @@
-package fr.eni.tpencheres.messages;
+package fr.eni.ProjetEncheres.messages;
 
 import java.util.ResourceBundle;
 
