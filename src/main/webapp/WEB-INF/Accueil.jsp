@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -43,6 +44,20 @@ enctype="multipart/form-data" method="post">
     </fieldset>
 </form>
 
+
+<img src="PCGamer.jpg">
+<p><a href="#">PC Gamer pour travailler</a></p>
+<p>Prix : 210 points<br>
+Fin de l'enchère : 10/08/2018
+</p>
+<p>Vendeur : jojo44</p>
+
+<img src="RocketStove.jpg">
+<p><a href="#">Rocket Stove pour riz et pâtes</a></p>
+<p>Prix : 185 points<br>
+Fin de l'enchère : 09/10/2018
+</p>
+<p>Vendeur : NineJea</p>
 
 
 
