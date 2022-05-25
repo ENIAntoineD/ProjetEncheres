@@ -33,16 +33,27 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur( 23, request.getParameter("pseudo"), "zez", "", "",
-				"", "", "", "", "aaa", false);
+				"", "", "", "", request.getParameter("motdepasse"), false);
 		UtilisateurManager utilisateur = new UtilisateurManager();
+		boolean connect = false;
 		
 		
-		if (utilisateur.VerificationPseudo(user)) {
-			System.out.println("connecté");
+		if (utilisateur.VerificationPseudo(user) && utilisateur.VerificationMDP(user)) {
+			System.out.println("connecté"); 
+			connect = true;
 			
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
-		rd.forward(request, response); 
+		
+		if (!connect) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
+			rd.forward(request, response); 
+		}
+		
+		else {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
+			rd.forward(request, response); 
+		}
+	
 		
 	}
 
