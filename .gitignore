@@ -2,6 +2,6 @@
 /.project
 build
 bin
-.class
+*.class
 .classpath
 /src/main/webapp/META-INF/context.xml

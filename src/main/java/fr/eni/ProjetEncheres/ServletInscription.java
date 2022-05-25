@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.javaee.module4.bll.AvisManager;
-import fr.eni.javaee.module4.bo.Avis;
-import fr.eni.javaee.module4.servlets.CodesResultatServlets;
+import fr.eni.ProjetEncheres.bll.UtilisateurManager;
+import fr.eni.ProjetEncheres.bo.Utilisateur;
+import fr.eni.ProjetEncheres.CodesResultatServlets;
 
 /**
  * Servlet implementation class ServletInscription
@@ -30,7 +30,7 @@ public class ServletInscription extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/Inscription.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Inscription.jsp");
 		rd.forward(request, response);
 	}
 
@@ -42,36 +42,52 @@ public class ServletInscription extends HttpServlet {
 		String pseudo;
 		String email;
 		String motdepasse;
-		
+		String nom;
+		String prenom;
+		String adresse;
+		String codepostal;
+		String ville; 
+		String confirmation;
+		String telephone;
 		
 		try {
 			pseudo = request.getParameter("pseudo");
 			motdepasse = request.getParameter("motdepasse");
 			email = request.getParameter("email");
+			nom = request.getParameter("Nom");
+			prenom = request.getParameter("Prenom");
+			adresse = request.getParameter("Adresse");
+			codepostal = request.getParameter("Cp");
+			ville = request.getParameter("Ville");
+			email = request.getParameter("email");
+			confirmation = request.getParameter("Confirm");
+			telephone = request.getParameter("Telephone");
 			
-			// BLL : UtilisateurManager (avec méthode ajouter).
-			// BO Utilisateur à créer.
-				
+			Utilisateur utilisateurTest; 
+			List<Utilisateur> nouveauxUtilisateur;
+			
 				
 			UtilisateurManager utilisateurManager = new UtilisateurManager();
 			
+			utilisateurTest = new Utilisateur(0, pseudo, nom, prenom, email, telephone, adresse, codepostal, 
+					ville, motdepasse, false);
+			
 			// Le pseudo n'accepte que des caractères alphanumériques. 
-			if (pseudo.matches("^[a-zA-Z0-9]$")) {
-			List<Utilisateur> nouveauUtilisateur= utilisateurManager.ajouter(pseudo, motdepasse, email);
 			// Vérifier que la base de données ne contient pas déjà le pseudo et l'email
-			// Peut-être faire un constructeur avec pseudo et email pour utiliser la méthode
-			// contains(Objet obj) sur une liste ? 
+			if (pseudo.matches("^[a-zA-Z0-9]$") 
+					&& !utilisateurManager.VerificationPseudo(utilisateurTest)) {
+				
+			// BLL : UtilisateurManager (avec méthode ajouter).
+			nouveauxUtilisateur= utilisateurManager.ajouter(pseudo, motdepasse, email);
+			
  			}
-		
 			
-			
-			request.setAttribute("nouveauUtilisateur", nouveauUtilisateur);
+			request.setAttribute("nouveauxUtilisateur", nouveauxUtilisateur);
 		}
-		catch (UtilisateurException e)
+		catch (Exception e)
 		{
 			List<Integer> listeCodesErreur=new ArrayList<>();
 			listeCodesErreur.add(CodesResultatServlets.FORMAT_PSEUDO_ERREUR);
-			//pseudo.matches(^[a-zA-Z0-9]$)
 			request.setAttribute("listeCodesErreur",listeCodesErreur);
 		}
 			
