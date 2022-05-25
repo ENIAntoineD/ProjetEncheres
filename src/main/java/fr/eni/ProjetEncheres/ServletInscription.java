@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ProjetEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
-import fr.eni.ProjetEncheres.CodesResultatServlets;
+import fr.eni.ProjetEncheres.CodesResultatsServlets;
 
 /**
  * Servlet implementation class ServletInscription
