@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import fr.eni.ProjetEncheres.bo.Utilisateur;
-import fr.eni.tpencheres.dal.jdbc.ConnectionBDD;
+import fr.eni.ProjetEncheres.dal.jdbc.ConnectionBDD;
 
 public class UtilisateurManager {
 	
@@ -66,6 +66,57 @@ public class UtilisateurManager {
 		}
 		
 		return pseudo;
+	}
+	
+public boolean VerificationMDP(Utilisateur utilisateur) {
+		
+		select = "SELECT mot_de_passe FROM UTILISATEURS WHERE mot_de_passe = ? ";
+		Connection cnx = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		boolean mdp = false;
+		
+		try {
+			cnx = ConnectionBDD.getConnection();
+			stmt =  cnx.prepareStatement(select);
+			stmt.setString(1,utilisateur.getMotDePasse());
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				System.out.println("mdp");
+				mdp = true;
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (cnx != null) {
+				try {
+					cnx.close();
+				} catch (SQLException e) { 
+					e.printStackTrace();
+				}
+			}
+		
+		}
+		
+		return mdp;
 	}
 	
 }
