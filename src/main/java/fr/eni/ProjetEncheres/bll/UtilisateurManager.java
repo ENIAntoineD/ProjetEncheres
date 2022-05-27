@@ -7,10 +7,13 @@ import java.sql.SQLException;
 
 import fr.eni.ProjetEncheres.bo.Utilisateur;
 import fr.eni.ProjetEncheres.dal.jdbc.ConnectionBDD;
+import fr.eni.ProjetEncheres.dal.jdbc.DAOFactory;
+import fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAO;
+
 
 public class UtilisateurManager {
 	
-	private String select;
+	/*private String select;
 	private String update;
 	private String delete;
 	private String insert;
@@ -117,6 +120,46 @@ public boolean VerificationMDP(Utilisateur utilisateur) {
 		}
 		
 		return mdp;
+	} */
+	private UtilisateurDAO utilisateurDAO;
+	
+	/**
+	 * Le constructeur permet d'initialiser la variable membre utilisateurDAO pour 
+	 * permettre une communication avec la base de données. 
+	 */
+	public UtilisateurManager() {
+		this.utilisateurDAO= DAOFactory.getUtilisateurDAO();
 	}
+	
+	
+	public Utilisateur ajouter(int credit, String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostal, String ville, String motDePasse, boolean admnistrateur) 
+	{
+		BusinessException exception = new BusinessException();
+		
+		// Ajouter un utilisateur non administrateur dans la base de données
+		Utilisateur utilisateur = new Utilisateur(credit, pseudo, nom, prenom, email, telephone, rue,
+			codePostal, ville, motDePasse, false);
+		
+		this.utilisateurDAO.insert(utilisateur);
+		
+		// Gérer exceptions
+		// Et validations
+		
+		
+		return utilisateur;
+	}
+	
+	public boolean VerificationPseudo(Utilisateur utilisateur) {
+		// Select du pseudo ou de l'email de l'utilisateur
+		return this.utilisateurDAO.VerificationPseudo(utilisateur);
+		
+	}
+	
+	public boolean VerificationMDP(Utilisateur utilisateur) {
+		// Select du mot de passe de l'utilisateur
+		return this.utilisateurDAO.VerificationMDP(utilisateur);
+	}
+
 	
 }
