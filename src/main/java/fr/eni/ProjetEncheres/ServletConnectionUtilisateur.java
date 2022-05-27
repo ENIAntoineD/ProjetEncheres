@@ -53,7 +53,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 			rd.forward(request, response); 
 		}
 		
-		if (utilisateur.VerificationPseudo(user) && utilisateur.VerificationMDP(user)) {
+		if (utilisateur.VerificationPseudoEtMDP(user) ) {
 			System.out.println("connecté"); 
 			
 			session.setAttribute("connecte", true);

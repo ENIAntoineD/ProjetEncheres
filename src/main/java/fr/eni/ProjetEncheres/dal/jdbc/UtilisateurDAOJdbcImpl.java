@@ -9,8 +9,8 @@ import fr.eni.ProjetEncheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
-	private static final String sqlSelectPseudoOrEmail = "SELECT pseudo FROM UTILISATEURS WHERE pseudo = ? or email = ?";
-	private static final String sqlSelectMdp = "SELECT mot_de_passe FROM UTILISATEURS WHERE mot_de_passe = ? ";
+	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? or email = ? and mot_de_passe=?";
+	
 
 	@Override
 	public void insert(Utilisateur utilisateur) {
@@ -24,7 +24,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	}
 	
-	public boolean VerificationPseudo(Utilisateur utilisateur) {
+	public boolean VerificationPseudoEtMDP(Utilisateur utilisateur) {
 		
 		Connection cnx = null;
 		PreparedStatement stmt = null;
@@ -33,9 +33,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		
 		try {
 			cnx = ConnectionBDD.getConnection();
-			stmt =  cnx.prepareStatement(sqlSelectPseudoOrEmail);
+			stmt =  cnx.prepareStatement(sqlSelectPseudoEtMDP);
 			stmt.setString(1,utilisateur.getPseudo());
 			stmt.setString(2, utilisateur.getEmail());
+			stmt.setString(3, utilisateur.getMotDePasse());
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				System.out.println("pseudo");
@@ -76,55 +77,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return pseudo;
 	}
 	
-	public boolean VerificationMDP(Utilisateur utilisateur) {
-		
-		Connection cnx = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		boolean mdp = false;
-		
-		try {
-			cnx = ConnectionBDD.getConnection();
-			stmt =  cnx.prepareStatement(sqlSelectMdp);
-			stmt.setString(1,utilisateur.getMotDePasse());
-			rs = stmt.executeQuery();
-			if (rs.next()) {
-				System.out.println("mdp");
-				mdp = true;
-				
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (cnx != null) {
-				try {
-					cnx.close();
-				} catch (SQLException e) { 
-					e.printStackTrace(); 
-				}
-			}
-		
-		}
-		
-		return mdp;
-	}
+	
 
 	
 

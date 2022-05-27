@@ -150,16 +150,13 @@ public boolean VerificationMDP(Utilisateur utilisateur) {
 		return utilisateur;
 	}
 	
-	public boolean VerificationPseudo(Utilisateur utilisateur) {
+	public boolean VerificationPseudoEtMDP(Utilisateur utilisateur) {
 		// Select du pseudo ou de l'email de l'utilisateur
-		return this.utilisateurDAO.VerificationPseudo(utilisateur);
+		return this.utilisateurDAO.VerificationPseudoEtMDP(utilisateur);
 		
 	}
 	
-	public boolean VerificationMDP(Utilisateur utilisateur) {
-		// Select du mot de passe de l'utilisateur
-		return this.utilisateurDAO.VerificationMDP(utilisateur);
-	}
+
 
 	
 }
