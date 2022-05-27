@@ -25,6 +25,7 @@
 		<th>Nom</th>
 		<th>Prenom</th>
 		<th>Email</th>
+		<th>Voir profil</th>
 		</tr>
 		
 		<% 
@@ -33,15 +34,17 @@
 	{
 		
 		%>
-
-		<tr><%= user.getPseudo()%></tr>
-		<tr><%= user.getNom()%></tr>
-		<tr><%= user.getPrenom()%></tr>
-		<tr><%= user.getEmail()%></tr>
-		</table>
+		<tr>
+		<td><%= user.getPseudo()%></td>
+		<td><%= user.getNom()%></td>
+		<td><%= user.getPrenom()%></td>
+		<td><%= user.getEmail()%></td>
+		<td><a href="">Profil</a></td>
+		</tr>
+		
 		<%
 	}%>
-	
+	</table>
 	
 	
 	
