@@ -127,7 +127,7 @@ public class Utilisateur {
 	
 	public String afficherUtilisateur()
 	{
-		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", credit=" + credit + ", pseudo=" + pseudo + ", nom="
+		return "Utilisateur [pseudo=" + pseudo + ", nom="
 				+ nom + ", prenom=" + prenom + ", email=" + email + "]";
 	}
 	

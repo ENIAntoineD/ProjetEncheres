@@ -11,22 +11,34 @@
 <body>
 <form action="ServletRechercher" method="post">
 <p>Rechercher quelqu'un :</p>
-<label>Nom : </label><input type="search" name="nom">
-<label>Prénom : </label><input type="search" name="prenom">
-<label>Pseudo : </label><input type="search" name="pseudo">
+<label>Recherche </label><input type="search" name="recherche" placeholder="nom,prénom ou pseudo">
 <button type="submit">Rechercher</button>
 </form>
 
 
 <% if(request.getAttribute("rechercher") != null)
-	{
+	{%>
+	
+			<table>
+		<tr>
+		<th>Pseudo</th>
+		<th>Nom</th>
+		<th>Prenom</th>
+		<th>Email</th>
+		</tr>
+		
+		<% 
 	
 	for(Utilisateur user : (List<Utilisateur>)request.getAttribute("rechercher"))
 	{
 		
 		%>
-		<p><%= user.afficherUtilisateur()%></p>
-		
+
+		<tr><%= user.getPseudo()%></tr>
+		<tr><%= user.getNom()%></tr>
+		<tr><%= user.getPrenom()%></tr>
+		<tr><%= user.getEmail()%></tr>
+		</table>
 		<%
 	}%>
 	
