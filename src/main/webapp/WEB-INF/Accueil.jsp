@@ -16,22 +16,7 @@
     <h1>Accueil</h1>
     <h2>Test</h2>
     
-    <p> <% if((boolean)session.getAttribute("connecte") == true){ 
-    	
-    	%>
-    	<%@ include file="deconnexion.html" %>
-    	
-    	<%
-    	
-    }
-    else   {    %> 
-    <a href="ServletConnectionUtilisateur">se connecter</a>
-    
-    <%
-    
-    }  %>
-    
-       </p>
+
        
        <form method="get" action="ServletAccueil">
        <button type ="submit" name="test"> Test</button>
@@ -44,18 +29,35 @@
     
     <p>Filtres</p>
     
+    <div>
     
     <input name="btInscription" type="submit" value="S'inscrire"
 title="Créer votre inscription">
-	<input name="btConnection" type="submit" value="Se connecter"
-title="Vous connecter">
+    
+   
+    <% if((boolean)session.getAttribute("connecte") == true){ 
+    	
+    	%>
+    	<%@ include file="deconnexion.html" %>
+    	<%
+    	
+    }
+    else   {    %> 
+    <form action="ServletConnectionUtilisateur" method="get">
+    <input type="submit" value="se connecter" > 
+    </form>
+    <%
+    
+    }  %>
+   
+       
 
 <label for="site-search">Rechercher</label>
 <input type="search" id="site-search" name="q">
 
 	<input name="btRechercher" type="submit" value="Rechercher"
 title="Effectuer une recherche">
-
+</div>
 
 
 <form name="categories" action="#"

@@ -124,4 +124,12 @@ public class Utilisateur {
 				+ ", codePostal=" + codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", admnistrateur="
 				+ admnistrateur + "]";
 	}
+	
+	public String afficherUtilisateur()
+	{
+		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", credit=" + credit + ", pseudo=" + pseudo + ", nom="
+				+ nom + ", prenom=" + prenom + ", email=" + email + "]";
+	}
+	
+
 }
