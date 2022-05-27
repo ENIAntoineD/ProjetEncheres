@@ -7,22 +7,78 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.ProjetEncheres.bll.BusinessException;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
 	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? or email = ? ";
 	private static final String sqlSelectPseudo = "SELECT pseudo,nom,prenom,email FROM UTILISATEURS WHERE pseudo like ? or nom like ? or prenom like ? ";
-
+	private static final String sqlInsert =  "INSERT INTO utilisateurs(pseudo,nom,prenom,email,telephone,rue,code_postal,ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String sqlDelete = "DELETE from utilisateurs WHERE no_utilisateur=?";
+	
+	// Insertion d'un utilisateur dans la base de données avec no_utilisateur ajouté automatiquement
 	@Override
-	public void insert(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
+	public void insert(Utilisateur utilisateur) throws BusinessException {
+		if(utilisateur==null)
+		{
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatsDAL.INSERT_UTIL_NULL);
+			throw businessException;
+		}
+		
+		try (Connection cnx = ConnectionBDD.getConnection() ){
 
+				PreparedStatement stmt = cnx.prepareStatement(sqlInsert, PreparedStatement.RETURN_GENERATED_KEYS);
+				int index = 1;
+				stmt.setString(index++, utilisateur.getPseudo());
+				stmt.setString(index++, utilisateur.getNom());
+				stmt.setString(index++, utilisateur.getPrenom());
+				stmt.setString(index++, utilisateur.getEmail());
+				stmt.setString(index++, utilisateur.getTelephone());
+				stmt.setString(index++, utilisateur.getRue());
+				stmt.setString(index++, utilisateur.getCodePostal());
+				stmt.setString(index++, utilisateur.getVille());
+				stmt.setString(index++, utilisateur.getMotDePasse());
+				stmt.setInt(index++, utilisateur.getCredit());
+				stmt.setBoolean(index++, utilisateur.isAdmnistrateur());
+			
+				stmt.executeUpdate();
+				
+				stmt.getGeneratedKeys();
+				ResultSet rs = stmt.getGeneratedKeys();
+				while(rs.next()) {
+					int no_utilisateur = rs.getInt(1); 
+					utilisateur.setNoUtilisateur(no_utilisateur);
+					System.out.println("Clé générée automatiquement pour l'id: " + no_utilisateur);
+				}
+				System.out.println("Utilisateur inséré.");
+			} catch (Exception e) 
+		{
+				e.printStackTrace();
+		}
 	}
 
+	// Suppression d'un utilisateur par id (no_utilisateur)
 	@Override
-	public void delete(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
+	public void deleteById(Integer id) throws BusinessException {
+		if(id == null)
+		{
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatsDAL.SUPPRESS_UTIL_NULL);
+			throw businessException;
+		}
+		
+		try (Connection cnx = ConnectionBDD.getConnection())
+		{
+					PreparedStatement stmt = cnx.prepareStatement(sqlDelete);
+					stmt.setInt(1, id);
+					stmt.executeUpdate();
+					System.out.println("Utilisateur supprimé.");
+				} catch (Exception e) 
+		{
+					e.printStackTrace();
+		}
 
 	}
 	

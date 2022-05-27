@@ -47,9 +47,9 @@
     </div>
      <div>
         <label for="telephone">Téléphone:</label>
-        <input type="tel" id="telephone" name="Telephone">
-        pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5}|(\(?\d{2,6}\)?))(-|)?)
-        (\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"</input>
+        <input type="tel" id="telephone" name="Telephone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5}|(\(?\d{2,6}\)?))(-|)?)
+        (\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$">
+       </input>
     </div>
     
 <input name="btCréer" type="submit" value="Créer"
