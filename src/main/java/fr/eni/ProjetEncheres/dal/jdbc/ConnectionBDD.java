@@ -28,7 +28,10 @@ public abstract class ConnectionBDD {
 	}
 	
 	cnx.close();
-	stmt.close();*/
+	stmt.close();
+	
+	*
+	*Test*/
 	
 	
 	private static DataSource ds = null;
