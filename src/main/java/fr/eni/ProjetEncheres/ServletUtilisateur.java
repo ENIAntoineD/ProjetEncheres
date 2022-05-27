@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl;
+import fr.eni.autreCouche.DatasPersonnes;
+
 /**
  * Servlet implementation class ServletUtilisateur
  */
@@ -20,7 +23,12 @@ public class ServletUtilisateur extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int index = Integer.parseInt(request.getParameter("index"));
+		UtilisateurDAOJdbcImpl userdao = new UtilisateurDAOJdbcImpl();
+		
+		request.setAttribute("personne",userdao.getInfos() );
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/utilisateur.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
