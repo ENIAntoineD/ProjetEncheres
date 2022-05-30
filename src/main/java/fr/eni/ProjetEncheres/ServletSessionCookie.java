@@ -60,6 +60,7 @@ public class ServletSessionCookie extends HttpServlet {
 			LocalDateTime dt =  LocalDateTime.now();
 			String date = dt.toString();
 	        setCookie(response, "cookieDerniereConnexion", date, 864000);
+	        System.out.println("test");
 		}
 			
 		}
