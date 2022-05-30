@@ -53,6 +53,17 @@ public class ServletSessionCookie extends HttpServlet {
 		else {
 			setCookie(response, "cookieDerniereConnexion", "", 0);
 		}
+		
+		for (Cookie cookie : cookies) {
+		if (cookie.getName().equals("cookieDerniereConnexion") ) 
+		{
+			LocalDateTime dt =  LocalDateTime.now();
+			String date = dt.toString();
+	        setCookie(response, "cookieDerniereConnexion", date, 864000);
+	        System.out.println("test");
+		}
+			
+		}
 	}
 	
 	public static void setCookie( HttpServletResponse response, String nom, String valeur, int maxAge ) {
