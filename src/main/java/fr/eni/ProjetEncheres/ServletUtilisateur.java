@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl;
-import fr.eni.autreCouche.DatasPersonnes;
+
 
 /**
  * Servlet implementation class ServletUtilisateur

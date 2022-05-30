@@ -1,12 +1,16 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +32,31 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("connecte", false);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
-		rd.forward(request, response);
+		Cookie[] cookies = request.getCookies();
+		boolean uneFois = false;
+	if (cookies != null) {
+			
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("cookieDerniereConnexion") ) {
+					session.setAttribute("connecte", true);
+					uneFois = true;
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+					rd.forward(request, response); 
+				}
+
+				
+				
+			}
+			
+			 if ( !uneFois )  {
+				session.setAttribute("connecte", false);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
+				rd.forward(request, response);
+			}
+		}
+		
+
+	
 	}
 
 	/**
@@ -45,8 +71,23 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 		Matcher m = pattern1.matcher(request.getParameter("pseudo"));
 		boolean testRegex = m.matches();
 		HttpSession session = request.getSession();
+		Cookie[] cookies = request.getCookies();
 		
+		if (cookies != null ) {
+			
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("cookieDerniereConnexion")  ) {
+					session.setAttribute("connecte", true);
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+					rd.forward(request, response); 
+				}
+			}
+		}
+		
+		
+		ServletSessionCookie.cookieConnexion(request, response);
 	
+		
 		if (!testRegex) {
 			System.out.println("erreur pattern");
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
@@ -74,5 +115,9 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 	
 		
 	}
+
+
+
+
 
 }

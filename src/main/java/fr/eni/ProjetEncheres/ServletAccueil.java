@@ -25,7 +25,7 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if (request.getParameter("deconnexion") != null) {
-			
+			ServletSessionCookie.setCookie(response, "cookieDerniereConnexion", "", 0);
 			session.setAttribute("connecte", false);
 		}
 		
@@ -35,6 +35,7 @@ public class ServletAccueil extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else {
+			
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
 		rd.forward(request, response);
 		}

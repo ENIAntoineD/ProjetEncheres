@@ -18,7 +18,7 @@
 <label>Mot de passe :</label><input type="password" placeholder="Exemple : JesuistonPère25" name="motdepasse" required="required">
 <br>
 <button type="submit">Connexion</button>
-<input type="checkbox">Se souvenir de moi<br>
+<input type="checkbox" name="souvenir">Se souvenir de moi<br>
 <a href="">Mot de passe oublié</a>
 
 </form>
