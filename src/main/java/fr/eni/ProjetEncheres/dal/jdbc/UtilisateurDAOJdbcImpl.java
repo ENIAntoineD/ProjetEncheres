@@ -12,7 +12,7 @@ import fr.eni.ProjetEncheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
-	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ? or email = ? ";
+	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ?";
 	private static final String sqlSelectPseudo = "SELECT pseudo,nom,prenom,email FROM UTILISATEURS WHERE pseudo like ? or nom like ? or prenom like ? ";
 	private static final String sqlInsert =  "INSERT INTO utilisateurs(pseudo,nom,prenom,email,telephone,rue,code_postal,ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String sqlDelete = "DELETE from utilisateurs WHERE no_utilisateur=?";
@@ -90,11 +90,13 @@ public boolean VerificationPseudoEtMDP(Utilisateur utilisateur) {
 		boolean pseudo = false;
 		
 		try {
+			System.out.println(utilisateur.getEmail());
 			cnx = ConnectionBDD.getConnection();
 			stmt =  cnx.prepareStatement(sqlSelectPseudoEtMDP);
 			stmt.setString(1, utilisateur.getPseudo() );
-			stmt.setString(2,  utilisateur.getEmail() );
+			//stmt.setString(2,  utilisateur.getEmail() );
 			rs = stmt.executeQuery();
+			System.out.println("ici");
 			if (rs.next() && rs.getString(2).equals( utilisateur.getMotDePasse())) {
 				System.out.println(rs.getString(1));
 				System.out.println(rs.getString(2));
@@ -104,6 +106,7 @@ public boolean VerificationPseudoEtMDP(Utilisateur utilisateur) {
 				
 				
 			}
+			System.out.println("icifin");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

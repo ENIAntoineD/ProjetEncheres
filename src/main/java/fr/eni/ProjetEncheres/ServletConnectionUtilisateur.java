@@ -65,6 +65,8 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utilisateur user = new Utilisateur( 23, request.getParameter("pseudo"), "zez", "", "",
 				"", "", "", "", request.getParameter("motdepasse"), false);
+		System.out.println(request.getParameter("pseudo"));
+		System.out.println(request.getParameter("pseudo"));
 		UtilisateurManager utilisateur = new UtilisateurManager();
 		boolean connect = false;
 		Pattern pattern1 = Pattern.compile("^[a-zA-Z0-9@.]{2,10}$");
