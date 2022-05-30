@@ -38,7 +38,7 @@ public class ServletRechercher extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Utilisateur user = new Utilisateur( 23, request.getParameter("recherche"), request.getParameter("recherche"), request.getParameter("recherche"), "",
+		Utilisateur user = new Utilisateur( 1,23, request.getParameter("recherche"), request.getParameter("recherche"), request.getParameter("recherche"), "",
 				"", "", "", "", "", false);
 		List<Utilisateur> users = new ArrayList<Utilisateur>();
 		

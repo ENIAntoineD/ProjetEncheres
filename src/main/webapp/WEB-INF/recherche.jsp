@@ -40,7 +40,7 @@
 		<td><%= user.getPrenom()%></td>
 		<td><%= user.getEmail()%></td>
 		<% request.setAttribute("personne", user); %>
-		<td><a href="ServletUtilisateur?index=<%user.getNoUtilisateur(); %>">Profil</a></td>
+		<td><a href="ServletUtilisateur?index=<%= user.getNoUtilisateur() %>">Profil</a></td>
 		</tr>
 		
 		<%
