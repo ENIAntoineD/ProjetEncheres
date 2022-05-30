@@ -32,7 +32,7 @@ public class ServletAccueil extends HttpServlet {
 		
 		if (request.getParameter("test") != null) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/test.jsp");
-			rd.forward(request, response);
+			rd.forward(request, response);  
 		}
 		else {
 			
