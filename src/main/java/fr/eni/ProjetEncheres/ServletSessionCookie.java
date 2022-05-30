@@ -71,5 +71,7 @@ public class ServletSessionCookie extends HttpServlet {
 	    cookie.setMaxAge( maxAge );
 	    response.addCookie( cookie );
 	}
+	
+	
 
 }

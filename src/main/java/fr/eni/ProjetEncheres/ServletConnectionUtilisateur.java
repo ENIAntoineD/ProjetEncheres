@@ -76,12 +76,14 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 		boolean testRegex = m.matches();
 		HttpSession session = request.getSession();
 		Cookie[] cookies = request.getCookies();
+		boolean cookiesDerniereConnexion = false;
 		
 		if (cookies != null ) {
 			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("cookieDerniereConnexion")  ) {
 					session.setAttribute("connecte", true);
+					cookiesDerniereConnexion = true;
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
 					rd.forward(request, response); 
 				}
@@ -111,7 +113,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 			rd.forward(request, response); 
 		}
 		
-		else if(testRegex && connect ){
+		else if(testRegex && connect && !cookiesDerniereConnexion  ){
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
 			rd.forward(request, response); 
 		}
