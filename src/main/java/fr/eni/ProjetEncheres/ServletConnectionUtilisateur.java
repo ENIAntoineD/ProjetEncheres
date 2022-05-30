@@ -41,7 +41,9 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 					session.setAttribute("connecte", true);
 					uneFois = true;
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+					System.out.println("test");
 					rd.forward(request, response); 
+					
 				}
 
 				

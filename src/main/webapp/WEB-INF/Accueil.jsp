@@ -46,7 +46,10 @@ title="Créer votre inscription">
     <%
     
     }  %>
+    </div>
   </header> 
+  
+  <div>
   
   <h2>Liste des enchères</h2>
   <p>Filtres</p>
@@ -65,7 +68,7 @@ enctype="multipart/form-data" method="post">
   <fieldset>
     <legend>Catégories</legend>
 		<label for="categories">Catégories :</label>
-		<select> name="categories" id="categories"
+		<select name="categories" id="categories">
 			<option>Informatique</option>
 			<option>Ameublement</option>
 			<option>Vêtement</option>
