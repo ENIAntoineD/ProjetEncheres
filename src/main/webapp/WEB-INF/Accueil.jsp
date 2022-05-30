@@ -23,12 +23,9 @@
        </form>
        
        
-
+<header>
     <h1>ENI-Encheres</h1>
-    <h2>Liste des enchères</h2>
-    
-    <p>Filtres</p>
-    
+      
     <div>
     
     <input name="btInscription" type="submit" value="S'inscrire"
@@ -49,7 +46,10 @@ title="Créer votre inscription">
     <%
     
     }  %>
-   
+  </header> 
+  
+  <h2>Liste des enchères</h2>
+  <p>Filtres</p>
        
 
 <label for="site-search">Rechercher</label>
@@ -76,14 +76,14 @@ enctype="multipart/form-data" method="post">
 </form>
 
 
-<img src="PCGamer.jpg">
+<img src="PCGamer.jpg"><%--image à ajouter --%>
 <p><a href="#">PC Gamer pour travailler</a></p>
 <p>Prix : 210 points<br>
 Fin de l'enchère : 10/08/2018
 </p>
 <p>Vendeur : jojo44</p>
 
-<img src="RocketStove.jpg">
+<img src="RocketStove.jpg"><%--image à ajouter --%>
 <p><a href="#">Rocket Stove pour riz et pâtes</a></p>
 <p>Prix : 185 points<br>
 Fin de l'enchère : 09/10/2018
