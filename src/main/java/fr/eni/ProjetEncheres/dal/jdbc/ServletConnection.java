@@ -37,7 +37,7 @@ public class ServletConnection extends HttpServlet {
 		UtilisateurManager utilisateur = new UtilisateurManager();
 		
 		
-		if (utilisateur.VerificationPseudo(user)) {
+		if (utilisateur.VerificationPseudoEtMDP(user)) {
 			System.out.println("connecté");
 			
 		}

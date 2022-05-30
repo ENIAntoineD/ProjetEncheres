@@ -46,7 +46,7 @@ public class ServletTestConnexionUtilisateur extends HttpServlet {
 		UtilisateurManager userm = new UtilisateurManager();
 		
 		
-		if (userm.VerificationPseudo(user)) {
+		if (userm.VerificationPseudoEtMDP(user)) {
 			System.out.println("connecté");
 			
 		}
