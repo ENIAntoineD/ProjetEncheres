@@ -1,9 +1,6 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,19 +35,18 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 			
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("cookieDerniereConnexion") ) {
+					System.out.println("cookie");
 					session.setAttribute("connecte", true);
 					uneFois = true;
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
-					System.out.println("test");
 					rd.forward(request, response); 
 					
 				}
 
-				
-				
 			}
 			
 			 if ( !uneFois )  {
+				 System.out.println("uneFois");
 				session.setAttribute("connecte", false);
 				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
 				rd.forward(request, response);

@@ -30,9 +30,10 @@
     
     <input name="btInscription" type="submit" value="S'inscrire"
 title="Créer votre inscription">
+
+    <% boolean isConnected = (boolean)session.getAttribute("connecte");%> 
     
-   
-    <% if((boolean)session.getAttribute("connecte") == true){ 
+    <% if(isConnected){ 
     	
     	%>
     	<%@ include file="deconnexion.html" %>
