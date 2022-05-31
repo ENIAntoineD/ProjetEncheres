@@ -35,7 +35,9 @@ public class ServletAccueil extends HttpServlet {
 			rd.forward(request, response);  
 		}
 		else {
-			
+			if (session.getAttribute("connecte") == null) {
+				session.setAttribute("connecte", false);
+			}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
 		rd.forward(request, response);
 		}
