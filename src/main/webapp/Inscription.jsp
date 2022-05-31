@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="Inscription.css">
 <title>Inscription</title>
 </head>
 <body>
+<header>
+	<h1>ENI-Encheres</h1>
+	</header>  
 	<h1>Mon Profil</h1>
 	<form action="/ServletInscription" method="post">
     <div>
