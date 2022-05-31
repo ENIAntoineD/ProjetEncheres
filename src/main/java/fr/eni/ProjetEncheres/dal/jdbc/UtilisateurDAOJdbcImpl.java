@@ -96,17 +96,13 @@ public boolean VerificationPseudoEtMDP(Utilisateur utilisateur) {
 			stmt.setString(1, utilisateur.getPseudo() );
 			//stmt.setString(2,  utilisateur.getEmail() );
 			rs = stmt.executeQuery();
-			System.out.println("ici");
 			if (rs.next() && rs.getString(2).equals( utilisateur.getMotDePasse())) {
 				System.out.println(rs.getString(1));
 				System.out.println(rs.getString(2));
-				System.out.println("pseudo");
-				System.out.println("mail");
 				pseudo = true;
 				
 				
 			}
-			System.out.println("icifin");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
