@@ -1,8 +1,6 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,15 +24,12 @@ public class ServletProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int index = Integer.parseInt(request.getParameter("index"));
 		UtilisateurDAOJdbcImpl userdao = new UtilisateurDAOJdbcImpl();
-		
-		Utilisateur user =  new Utilisateur(23, (String) request.getSession().getAttribute("pseudosession"), "zez", "", "",
-				"", "", "", "", "", false);
-		 int index = userdao.selectbypseudo(user);
+		Utilisateur user = null;
 		user = userdao.getid(index);
-		request.setAttribute("profil", user);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+		request.setAttribute("personne", user);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/utilisateur.jsp");
 		rd.forward(request, response);
 	}
 
