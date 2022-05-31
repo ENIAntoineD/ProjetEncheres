@@ -65,12 +65,14 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 				"", "", "", "", request.getParameter("motdepasse"), false);
 		System.out.println(request.getParameter("pseudo"));
 		System.out.println(request.getParameter("pseudo"));
+		
 		UtilisateurManager utilisateur = new UtilisateurManager();
 		boolean connect = false;
 		Pattern pattern1 = Pattern.compile("^[a-zA-Z0-9@.]{2,10}$");
 		Matcher m = pattern1.matcher(request.getParameter("pseudo"));
 		boolean testRegex = m.matches();
 		HttpSession session = request.getSession();
+		
 		Cookie[] cookies = request.getCookies();
 		boolean cookiesDerniereConnexion = false;
 		
@@ -98,7 +100,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 		
 		if (utilisateur.VerificationPseudoEtMDP(user) ) {
 			System.out.println("connecté"); 
-			
+			session.setAttribute("pseudosession", request.getParameter("pseudo"));
 			session.setAttribute("connecte", true);
 			connect = true;
 			

@@ -1,6 +1,8 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +18,7 @@ import fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl;
 /**
  * Servlet implementation class ServletUtilisateur
  */
-@WebServlet("/ServletUtilisateur")
+@WebServlet("/ServletProfil")
 public class ServletProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,12 +26,15 @@ public class ServletProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int index = Integer.parseInt(request.getParameter("index"));
+		
 		UtilisateurDAOJdbcImpl userdao = new UtilisateurDAOJdbcImpl();
-		Utilisateur user = null;
+		
+		Utilisateur user =  new Utilisateur(23, (String) request.getSession().getAttribute("pseudosession"), "zez", "", "",
+				"", "", "", "", "", false);
+		 int index = userdao.selectbypseudo(user);
 		user = userdao.getid(index);
-		request.setAttribute("personne", user);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/utilisateur.jsp");
+		request.setAttribute("profil", user);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
 		rd.forward(request, response);
 	}
 
