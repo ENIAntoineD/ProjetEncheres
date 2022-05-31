@@ -45,8 +45,9 @@ public class ModifierProfil extends HttpServlet {
 		
 		if(request.getParameter("btEnregistrer") != null) {
 			user = userdao.getid(index);
-			user = new Utilisateur(index, 23, request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("Nom"),request.getParameter("Prenom"),
-					request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("Telephone"), request.getParameter("motdepasse"), false);
+			System.out.println(index);
+			user = new Utilisateur(index, 23, request.getParameter("pseudo"), request.getParameter("Nom"), request.getParameter("Prenom"),request.getParameter("email"),
+					request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
 			userdao.updateProfil(user);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
 			rd.forward(request, response);
