@@ -9,7 +9,7 @@
 <title>Modifier</title>
 </head>
 <body>
-<form action="/ServletInscription" method="post">
+<form action="ModifierProfil" method="post">
 
 <% Utilisateur user = (Utilisateur)request.getAttribute("monprofil"); %>
     <div>
@@ -67,7 +67,7 @@
 title="Enregistrer les informations">
 <input name="btSupprimer" type="submit" value="Supprimer mon compte"
 title="Supprimer mon compte">
-   
+
     
 </form>
 </body>

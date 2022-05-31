@@ -10,7 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import fr.eni.ProjetEncheres.bll.BusinessException;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
 import fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl;
 
@@ -40,8 +42,28 @@ public class ModifierProfil extends HttpServlet {
 		user = userdao.getid(index);
 		
 		request.setAttribute("monprofil", user);
+		
+		if(request.getParameter("btEnregistrer") != null) {
+			
+		}
+		
+		if(request.getParameter("btSupprimer") != null) {
+			try {
+				HttpSession session = request.getSession();
+				userdao.deleteById(index);
+				session.setAttribute("connecte", false);
+			} catch (BusinessException e) {
+				e.printStackTrace();
+	
+			}
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+			rd.forward(request, response);
+		}
 	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
 	rd.forward(request, response);
+	
+	
 	}
 
 	/**
