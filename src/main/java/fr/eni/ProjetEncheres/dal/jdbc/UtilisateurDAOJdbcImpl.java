@@ -12,11 +12,11 @@ import fr.eni.ProjetEncheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
-	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe FROM UTILISATEURS WHERE pseudo = ?";
+	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe,no_utilisateur FROM UTILISATEURS WHERE pseudo = ?";
 	private static final String sqlSelectPseudo = "SELECT no_utilisateur,pseudo,nom,prenom,email FROM UTILISATEURS WHERE pseudo like ? or nom like ? or prenom like ? ";
 	private static final String sqlInsert =  "INSERT INTO utilisateurs(pseudo,nom,prenom,email,telephone,rue,code_postal,ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String sqlDelete = "DELETE from utilisateurs WHERE no_utilisateur=?";
-	private static final String sqlSelectByID = "SELECT pseudo,nom,prenom,email FROM UTILISATEURS WHERE no_utilisateur=? ";
+	private static final String sqlSelectByID = "SELECT pseudo,nom,prenom,email,telephone,rue,code_postal,ville,credit FROM UTILISATEURS WHERE no_utilisateur=? ";
 	// Insertion d'un utilisateur dans la base de données avec no_utilisateur ajouté automatiquement
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
@@ -205,8 +205,8 @@ public Utilisateur getid(int noUtilisateur) {
 		
 		if (rs.next() ) {
 		
-			 user = new Utilisateur( 23, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-					"", "", "", "", "", false);
+			 user = new Utilisateur( rs.getInt(9), rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+					 rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), "", false);
 			
 			
 		}
@@ -242,6 +242,60 @@ public Utilisateur getid(int noUtilisateur) {
 	
 	return user;
 }
+
+public int selectbypseudo(Utilisateur utilisateur) {
+	
+	Connection cnx = null;
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	int noUtilisateur = 0 ;
+	
+	
+	try {
+		System.out.println(utilisateur.getEmail());
+		cnx = ConnectionBDD.getConnection();
+		stmt =  cnx.prepareStatement(sqlSelectPseudoEtMDP);
+		stmt.setString(1, utilisateur.getPseudo() );
+		//stmt.setString(2,  utilisateur.getEmail() );
+		rs = stmt.executeQuery();
+		if (rs.next()) {
+		noUtilisateur = rs.getInt(3);
+		
+			
+			
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (stmt != null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (cnx != null) {
+			try {
+				cnx.close();
+			} catch (SQLException e) { 
+				e.printStackTrace();
+			}
+		}
+	
+	}
+	
+	return noUtilisateur;
+}
+
 	
 
 	

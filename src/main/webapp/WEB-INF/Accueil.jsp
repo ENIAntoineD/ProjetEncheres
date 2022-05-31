@@ -29,7 +29,8 @@
        
 <header>
     <h1>ENI-Encheres</h1>  
-      
+    
+      <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
     <div>
     
     <input name="btInscription" type="submit" value="S'inscrire"
