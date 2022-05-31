@@ -18,20 +18,12 @@
 
 
     <h1>Accueil</h1>
-    <h2>Test</h2>
-    
-
-       
-       <form method="get" action="ServletAccueil">
-       <button type ="submit" name="test"> Test</button>
-       </form>
        
        
 <header>
     <h1>ENI-Encheres</h1>  
     
-      <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
-    <div>
+     
     
     <input name="btInscription" type="submit" value="S'inscrire"
 title="Créer votre inscription">
@@ -41,6 +33,8 @@ title="Créer votre inscription">
     <% if(isConnected){ 
     	
     	%>
+    	 <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
+    <div>
     	<%@ include file="deconnexion.html" %>
     	<%
     	
