@@ -44,7 +44,13 @@ public class ModifierProfil extends HttpServlet {
 		request.setAttribute("monprofil", user);
 		
 		if(request.getParameter("btEnregistrer") != null) {
-			
+			user = userdao.getid(index);
+			user = new Utilisateur(index, 23, request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("Nom"),request.getParameter("Prenom"),
+					request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("Telephone"), request.getParameter("motdepasse"), false);
+			userdao.updateProfil(user);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+			rd.forward(request, response);
+			System.out.println("update");
 		}
 		
 		if(request.getParameter("btSupprimer") != null) {
@@ -60,8 +66,11 @@ public class ModifierProfil extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
 			rd.forward(request, response);
 		}
-	RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+		
+	if(request.getParameter("btEnregistrer") == null) {
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
 	rd.forward(request, response);
+	}
 	
 	
 	}

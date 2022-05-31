@@ -17,6 +17,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String sqlInsert =  "INSERT INTO utilisateurs(pseudo,nom,prenom,email,telephone,rue,code_postal,ville, mot_de_passe, credit, administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String sqlDelete = "DELETE from utilisateurs WHERE no_utilisateur=?";
 	private static final String sqlSelectByID = "SELECT pseudo,nom,prenom,email,telephone,rue,code_postal,ville,credit FROM UTILISATEURS WHERE no_utilisateur=? ";
+	private static final String sqlUpdate ="UPDATE utilisateurs SET pseudo = ?, email = ?, nom = ?, prenom = ?, rue = ?, code_postal = ?, ville = ?, telephone = ?, mot_de_passe = ? WHERE no_utilisateur = ?";
 	// Insertion d'un utilisateur dans la base de données avec no_utilisateur ajouté automatiquement
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
@@ -296,7 +297,30 @@ public int selectbypseudo(Utilisateur utilisateur) {
 	return noUtilisateur;
 }
 
+public Utilisateur updateProfil(Utilisateur utilisateur) {
+	Connection cnx = null;
+	PreparedStatement stmt = null;
 	
+	try {
+		cnx = ConnectionBDD.getConnection();
+		stmt =  cnx.prepareStatement(sqlUpdate);
+		stmt.setString(1, utilisateur.getPseudo() );
+		stmt.setString(2, utilisateur.getEmail() );
+		stmt.setString(3, utilisateur.getNom() );
+		stmt.setString(4, utilisateur.getPrenom() );
+		stmt.setString(5, utilisateur.getRue() );
+		stmt.setString(6, utilisateur.getCodePostal() );
+		stmt.setString(7, utilisateur.getVille() );
+		stmt.setString(8, utilisateur.getTelephone() );
+		stmt.setString(9, utilisateur.getMotDePasse() );
+		stmt.setInt(10, utilisateur.getNoUtilisateur());
+			stmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return utilisateur;
+}
 
 	
 

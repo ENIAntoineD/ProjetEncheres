@@ -58,7 +58,7 @@
     </div>
         <div>
         <label for="password">Confirmation du nouveau mot de passe:</label>
-        <input type="password" id="password" name="Confirm"></input>
+        <input type="password" id="password" name="Confirm1"></input>
     </div>
     
     
