@@ -31,7 +31,7 @@ public class ServletProfil extends HttpServlet {
 		
 		Utilisateur user =  new Utilisateur(23, (String) request.getSession().getAttribute("pseudosession"), "zez", "", "",
 				"", "", "", "", "", false);
-		 int index = userdao.selectbypseudo(user);
+		 int index = userdao.selectbypseudo(user);  
 		user = userdao.getid(index);
 		request.setAttribute("profil", user);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
