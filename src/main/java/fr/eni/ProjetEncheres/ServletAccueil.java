@@ -36,8 +36,6 @@ public class ServletAccueil extends HttpServlet {
 		}
 		else {
 
-	
-
 			boolean isConnected = false;
 			if(session != null && session.getAttribute("connecte")!= null) {
 				isConnected = (boolean)session.getAttribute("connecte");
