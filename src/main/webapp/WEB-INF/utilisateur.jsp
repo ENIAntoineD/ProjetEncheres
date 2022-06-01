@@ -27,5 +27,6 @@
 			
 		}
 	%>
+	<%@ include file="html/retourAccueil.html" %>
 </body>
 </html>

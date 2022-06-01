@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.ProjetEncheres.bll.UtilisateurManager;
 import fr.eni.ProjetEncheres.bo.Utilisateur;
@@ -30,15 +31,17 @@ public class ServletInscription extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Inscription.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Inscription.jsp");
 		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		String pseudo;
 		String email;
 		String motdepasse;
@@ -64,7 +67,7 @@ public class ServletInscription extends HttpServlet {
 			telephone = request.getParameter("Telephone");
 			
 			Utilisateur utilisateurTest; 
-			List<Utilisateur> nouveauxUtilisateur;
+			Utilisateur nouveauxUtilisateur = null;
 			
 				
 			UtilisateurManager utilisateurManager = new UtilisateurManager();
@@ -74,21 +77,26 @@ public class ServletInscription extends HttpServlet {
 			
 			// Le pseudo n'accepte que des caractères alphanumériques. 
 			// Vérifier que la base de données ne contient pas déjà le pseudo et l'email
-			if (pseudo.matches("^[a-zA-Z0-9]$") 
-					&& !utilisateurManager.VerificationPseudo(utilisateurTest)) {
+			if (pseudo.matches("^[a-zA-Z0-9@.]{2,10}$") 
+					&& !utilisateurManager.VerificationPseudoEtMDP(utilisateurTest)) {
+				
 				
 			// BLL : UtilisateurManager (avec méthode ajouter).
-			nouveauxUtilisateur= utilisateurManager.ajouter(pseudo, motdepasse, email);
+			nouveauxUtilisateur= (Utilisateur) utilisateurManager.ajouter(0, pseudo, nom, prenom, email, telephone, adresse, codepostal, 
+					ville, motdepasse, false);
 			
  			}
 			
 			request.setAttribute("nouveauxUtilisateur", nouveauxUtilisateur);
+			session.setAttribute("connecte", true);
+			session.setAttribute("pseudosession", nouveauxUtilisateur.getPseudo());
 		}
 		catch (Exception e)
 		{
 			List<Integer> listeCodesErreur=new ArrayList<>();
-			listeCodesErreur.add(CodesResultatServlets.FORMAT_PSEUDO_ERREUR);
+			listeCodesErreur.add(CodesResultatsServlets.FORMAT_PSEUDO_UTILISATEUR_ERREUR);
 			request.setAttribute("listeCodesErreur",listeCodesErreur);
+			
 		}
 			
 			// Si c'est bon redirection vers page d'accueil 

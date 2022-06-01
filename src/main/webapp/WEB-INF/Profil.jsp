@@ -34,5 +34,6 @@
 	%>
 	
 	<a href="ModifierProfil?index=<%=(String) session.getAttribute("pseudosession") %>"><button>Modifier</button></a>
+	<%@ include file="html/retourAccueil.html" %>
 </body>
 </html>

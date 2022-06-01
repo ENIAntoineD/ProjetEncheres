@@ -141,7 +141,12 @@ public boolean VerificationMDP(Utilisateur utilisateur) {
 		Utilisateur utilisateur = new Utilisateur(credit, pseudo, nom, prenom, email, telephone, rue,
 			codePostal, ville, motDePasse, false);
 		
-		this.utilisateurDAO.insert(utilisateur);
+		try {
+			this.utilisateurDAO.insert(utilisateur);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// Gérer exceptions
 		// Et validations

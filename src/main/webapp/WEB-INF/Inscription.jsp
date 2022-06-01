@@ -7,8 +7,8 @@
 <title>Inscription</title>
 </head>
 <body>
-	<h1>Mon Profil</h1>
-	<form action="/ServletInscription" method="post">
+	<h1>Inscription</h1>
+	<form action="ServletInscription" method="post">
     <div>
         <label for="pseudo">Pseudo:</label>
         <input type="text" id="pseudo" name="pseudo">
@@ -47,16 +47,15 @@
     </div>
      <div>
         <label for="telephone">Téléphone:</label>
-        <input type="tel" id="telephone" name="Telephone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5}|(\(?\d{2,6}\)?))(-|)?)
-        (\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$">
-       </input>
+        <input type="tel" id="telephone" name="Telephone" pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$">
+       
     </div>
     
 <input name="btCréer" type="submit" value="Créer"
 title="Créer votre inscription">
 <input name="btAnnuler" type="reset" value="Annuler"
 title="Annulez votre saisie">
-   
+   <%@ include file="html/retourAccueil.html" %>
     
 </form>
 </body>

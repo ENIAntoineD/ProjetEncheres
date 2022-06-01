@@ -9,7 +9,9 @@
 <title>Recherche</title>
 </head>
 <body>
+<%@ include file="html/retourAccueil.html" %>
 <form action="ServletRechercher" method="post">
+
 <p>Rechercher quelqu'un :</p>
 <label>Recherche </label><input type="search" name="recherche" placeholder="nom,prénom ou pseudo">
 <button type="submit">Rechercher</button>

@@ -80,7 +80,9 @@ title="Enregistrer les informations">
 <input name="btSupprimer" type="submit" value="Supprimer mon compte"
 title="Supprimer mon compte">
 
+
     
 </form>
+<%@ include file="html/retourAccueil.html" %>
 </body>
 </html>

@@ -25,8 +25,7 @@
     
      
     
-    <input name="btInscription" type="submit" value="S'inscrire"
-title="Créer votre inscription">
+
 
     <% boolean isConnected = (boolean)session.getAttribute("connecte");%> 
     
@@ -34,15 +33,19 @@ title="Créer votre inscription">
     	
     	%>
     	 <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
+    	 <a href="ServletRechercher">Rechercher quelqu'un</a>
     <div>
-    	<%@ include file="deconnexion.html" %>
+    	<%@ include file="html/deconnexion.html" %>
     	<%
     	
     }
     else   {    %> 
     <form action="ServletConnectionUtilisateur" method="get">
     <input type="submit" value="se connecter" > 
+
     </form>
+            <a href="ServletInscription"><button   value="S'inscrire"
+>S'inscrire</button></a>
     <%
     
     }  %>
