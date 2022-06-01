@@ -78,8 +78,76 @@ public class ModifierProfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		doGet(request, response);
+=======
+		
+		UtilisateurDAOJdbcImpl userdao = new UtilisateurDAOJdbcImpl();
+		Utilisateur user =  new Utilisateur(0, 23, (String) request.getSession().getAttribute("pseudosession"), request.getParameter("Nom"), request.getParameter("Prenom"),request.getParameter("email"),
+				request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
+		int index = userdao.selectbypseudo(user);
+		HttpSession session = request.getSession();
+				
+		request.setAttribute("monprofil", user);
+
+		
+
+		//Pattern pattern1 = Pattern.compile("^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$");
+		//Matcher m = pattern1.matcher(request.getParameter("Telephone"));
+		//boolean testRegex = m.matches();
+
+		
+
+
+
+//		if (!testRegex) {
+//			System.out.println("erreur pattern");
+//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+//			rd.forward(request, response); 
+		//}
+
+		
+		//doGet(request, response);
+		
+		
+		if(request.getParameter("btSupprimer") != null) {
+			if(userdao.VerificationMDP(index, user) == true) {
+			try {
+				
+				userdao.deleteById(index);
+				session.setAttribute("connecte", false);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+				rd.forward(request, response);
+			}
+			 catch (BusinessException e) {
+				e.printStackTrace();
+				
+			}
+			}
+			
+			else{
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+			rd.forward(request, response);
+			}
+		}
+		
+		if(request.getParameter("btEnregistrer") != null) {
+			user = userdao.getid(index);
+			user = new Utilisateur(index, 23, request.getParameter("pseudo"), request.getParameter("Nom"), request.getParameter("Prenom"),request.getParameter("email"),
+					request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
+			if(userdao.VerificationMDP(index, user) == true) {
+			userdao.updateProfil(user);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp" + "?index=" + (String)session.getAttribute("pseudosession"));
+			rd.forward(request, response);
+			}
+			else{
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+			rd.forward(request, response);
+			}
+		}
+>>>>>>> branch 'main' of https://github.com/ENIAntoineD/ProjetEncheres.git
 	}
 
 }
