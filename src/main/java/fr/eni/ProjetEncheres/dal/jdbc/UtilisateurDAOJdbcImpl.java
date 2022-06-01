@@ -12,6 +12,7 @@ import fr.eni.ProjetEncheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
+	// requetes SQL pour les utilisateurs
 	private static final String sqlSelectPseudoEtMDP = "SELECT pseudo,mot_de_passe,no_utilisateur FROM UTILISATEURS WHERE pseudo = ?";
 	private static final String sqlSelectMDP = "SELECT mot_de_passe FROM UTILISATEURS WHERE no_utilisateur = ?";
 	private static final String sqlSelectPseudo = "SELECT no_utilisateur,pseudo,nom,prenom,email FROM UTILISATEURS WHERE pseudo like ? or nom like ? or prenom like ? ";
@@ -19,6 +20,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String sqlDelete = "DELETE from utilisateurs WHERE no_utilisateur=?";
 	private static final String sqlSelectByID = "SELECT pseudo,nom,prenom,email,telephone,rue,code_postal,ville,credit FROM UTILISATEURS WHERE no_utilisateur=? ";
 	private static final String sqlUpdate ="UPDATE utilisateurs SET pseudo = ?, email = ?, nom = ?, prenom = ?, rue = ?, code_postal = ?, ville = ?, telephone = ?, mot_de_passe = ? WHERE no_utilisateur = ?";
+	
+	
 	// Insertion d'un utilisateur dans la base de données avec no_utilisateur ajouté automatiquement
 	@Override
 	public void insert(Utilisateur utilisateur) throws BusinessException {
