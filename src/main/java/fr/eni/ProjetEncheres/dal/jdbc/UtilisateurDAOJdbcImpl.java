@@ -131,7 +131,6 @@ public boolean VerificationPseudoEtMDP(Utilisateur utilisateur) {
 					e.printStackTrace();
 				}
 			}
-		
 		}
 		
 		return pseudo;
