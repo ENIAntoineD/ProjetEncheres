@@ -78,6 +78,19 @@ enctype="multipart/form-data" method="post">
     </fieldset>
 </form>
 
+<form>
+<div>
+	<input type="radio" name="Encheres" id="Achats"> Achats <br>
+	<input type="checkbox" id="Achats"> enchères ouvertes<br>
+	<input type="checkbox" id="Achats"> mes enchères en cours<br>
+	<input type="checkbox" id="Achats"> mes enchères remportées<br>
+</div>
+<div>
+	<input type="radio" name="Encheres" id="Ventes">Ventes<br>
+	<input type="checkbox" id="Achats"> mes ventes en cours<br>
+	<input type="checkbox" id="Achats"> ventes non débutées<br>
+	<input type="checkbox" id="Achats"> ventes terminées<br>
+</div>
 
 <img src="PCGamer.jpg"><%--image à ajouter --%>
 <p><a href="#">PC Gamer pour travailler</a></p>
@@ -93,7 +106,7 @@ Fin de l'enchère : 09/10/2018
 </p>
 <p>Vendeur : NineJea</p>
 
-
+</form>
 
 </body>
 </html>
