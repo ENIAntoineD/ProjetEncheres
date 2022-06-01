@@ -9,21 +9,28 @@
 <body>
 <h1>Se connecter:</h1>
 <div>
-<a href="">Pas de compte? s'inscrire</a>
-<form method="post"  action="ServletConnectionUtilisateur">
-<label>Pseudo :</label><input type="text" placeholder ="exemple: DarkMimol256"   pattern="^[a-zA-Z0-9@.]{2,10}$" name="pseudo" required="required" autofocus="autofocus" title="Le pseudo doit contenir uniquement des caractères alphanumériques" >
-<br>
-<label>Mot de passe :</label><input type="password" name="motdepasse" required="required" placeholder="Exemple : JesuistonPère25">
-<br>
-<p style="color: red"> Le nom d'utilisateur ou le mot de passe est incorrect    </p>
-<button type="submit">Valider</button>
 
+
+<form method="post"  action="ServletConnectionUtilisateur" name="SeConnecter">
+<label>Identifiant :</label><input type="text" name="pseudo" title="Le pseudo doit contenir uniquement des caractères alphanumériques" placeholder ="exemple: DarkMimol256"  pattern="^[a-zA-Z0-9@.]{2,10}$"required="required" autofocus="autofocus">
+<br>
+<label>Mot de passe :</label><input type="password" placeholder="Exemple : JesuistonPère25" name="motdepasse" required="required">
+<br>
+<button type="submit">Connexion</button>
+<input type="checkbox" name="souvenir">Se souvenir de moi<br>
 <a href="">Mot de passe oublié</a>
+
+</form>
+<p style="color: red"> Le nom d'utilisateur ou le mot de passe est incorrect    </p>
+
+<form action="ServletInscription" name="Creer">
+
+<a href="ServletInscription"><button>Créer un compte</button></a>
+
 </form>
 
-
+<%@ include file="retourAccueil.html" %>
 </div>
-<%@include file="retourAccueil.html" %>
 
 </body>
 </html>
