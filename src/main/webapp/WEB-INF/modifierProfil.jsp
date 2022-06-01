@@ -1,3 +1,4 @@
+<%@page import="fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="fr.eni.ProjetEncheres.bo.Utilisateur"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -44,13 +45,24 @@
 
      <div>
         <label for="telephone">Téléphone:</label>
-        <input type="tel" id="telephone" name="Telephone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5}|(\(?\d{2,6}\)?))(-|)?)
-        (\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="<%= user.getTelephone() %>">
+        <input type="tel" id="telephone" name="Telephone" pattern="^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$" value="<%= user.getTelephone() %>">
        
     </div>
      <div>
         <label for="password">Mot De Passe actuel:</label>
-        <input type="password" id="password" name="motdepasse"></input>
+        <input type="password" id="password" name="motdepasse" required="required"></input>
+        <%
+        
+        if(request.getParameter("btSupprimer") != null || request.getParameter("btEnregistrer") != null) {
+        UtilisateurDAOJdbcImpl userdao = new UtilisateurDAOJdbcImpl();
+        int index = userdao.selectbypseudo(user);
+        if(userdao.VerificationMDP(index, user) != true){
+        	 %>
+        <p style="color: red"> Le mot de passe est incorrect</p>
+        <%
+        }
+        };%>
+       
     </div>
         <div>
         <label for="password">Nouveau mot de passe:</label>
