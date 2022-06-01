@@ -66,15 +66,15 @@ public class ModifierProfil extends HttpServlet {
 				
 		request.setAttribute("monprofil", user);
 		
-//		Pattern pattern1 = Pattern.compile("^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$");
-//		Matcher m = pattern1.matcher(request.getParameter("Telephone"));
-//		boolean testRegex = m.matches();
+		Pattern pattern1 = Pattern.compile("^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$");
+	Matcher m = pattern1.matcher(request.getParameter("Telephone"));
+		boolean testRegex = m.matches();
 		
-//		if (!testRegex) {
-//			System.out.println("erreur pattern");
-//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
-//			rd.forward(request, response); 
-//		}
+		if (!testRegex) {
+			System.out.println("erreur pattern");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+			rd.forward(request, response); 
+		}
 		
 		//doGet(request, response);
 		
