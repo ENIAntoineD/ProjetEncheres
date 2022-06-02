@@ -41,12 +41,13 @@
     	
     }
     else   {    %> 
-    <form action="ServletConnectionUtilisateur" method="get">
-    <input type="submit" value="se connecter" > 
+    <a href="ServletConnectionUtilisateur" value=seConnecter > se connecter</a>
+    
+    
 
     </form>
-            <a href="ServletInscription"><button   value="S'inscrire"
->S'inscrire</button></a>
+            <a href="ServletInscription">   value="S'inscrire"
+>S'inscrire</a>
     <%
     
     }  %>
