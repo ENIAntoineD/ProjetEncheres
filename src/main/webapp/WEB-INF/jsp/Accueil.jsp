@@ -54,7 +54,7 @@
   
   <div>
   
-  <h2>Liste des enchères</h2>
+  <h2 class="liste">Liste des enchères</h2>
   <p>Filtres</p>
        
 

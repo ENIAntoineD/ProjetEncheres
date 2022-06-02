@@ -25,7 +25,7 @@ h1{
 	align-self: center;
 }
 
-h2{
+header h2{
 	margin-left: 50px;
 	order: 1;
 	align-self: flex-end;

@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body  {
+	text-align: center;
+}
 h1{
 	text-align: center;
 	
@@ -10,13 +13,26 @@ p{
 	display : inline-block;
 	flex-direction: column;
     text-align : center;
-    margin : 15px 15px 15px 15px;
+    margin : 10px 10px 10px 10px;
     justify-content : space-between;
     
 }
 
-a{
+
+
+
+div  {
+	
 	display: flex;
-	align-content:flex-end;
+	flex-direction : column;
+	align-content: flex-start;
+	
 }
+div p{
+	display: flex;
+	align-self: flex-start;
+	margin-left : 48%;
+	
+}
+
 
