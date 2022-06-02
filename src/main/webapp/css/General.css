@@ -9,26 +9,33 @@ header{
 	top:0;
 	left:0;
 	width:100%;
-	height:110px;
+	height:200px;
 	background-color: #EBDEF0;
 	color: #3498DB;
 	display: flex;
 	justify-content: space-between;
+	
 }
 
 
 
 h1{
 	text-align: center;
+	order: 2;
+	align-self: center;
 }
 
 h2{
 	margin-left: 50px;
+	order: 1;
+	align-self: flex-end;
+	margin-bottom: 50px;
 }
 
 header div{
 	margin-right: 20px;
 	text-align: right;
 	padding: top;
+	order: 3;
 	
 }
