@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/Inscription.css">
  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/Inscription.css">
+
  
 <title>Inscription</title>
 </head>
@@ -20,6 +21,7 @@
 	 </div>
 	</header>
 	<form action="ServletInscription" method="post">
+	<main>
 	<section class="premier">
     <div>
         <label for="pseudo">Pseudo:</label>
@@ -65,6 +67,7 @@
        
     </div>
     </section>
+    </main>
     
 <input name="btCréer" type="submit" value="Créer"
 title="Créer votre inscription">

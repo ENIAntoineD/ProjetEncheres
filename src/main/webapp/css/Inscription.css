@@ -15,14 +15,15 @@
 	order: 3;
 }
 
-.premier{
-	display: inline-block;
+.premier
+{
+	display : inline-block;
 	flex-direction: column;
-    text-align: center;
-    border: 1px solid rgba(219,161,219,255);
-    margin: 15px 15px 15px 15px;
+    text-align : center;
+    border : 1px solid rgba(219,161,219,255);
+    margin : 15px 15px 15px 15px;
     border-radius: 5px;
-    justify-content: space-between;
+    justify-content : space-between;
 }
 
 .deuxieme{
