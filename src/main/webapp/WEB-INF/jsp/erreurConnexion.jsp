@@ -20,7 +20,6 @@
 </header>
 <div>
 
-
 <form method="post"  action="ServletConnectionUtilisateur" name="SeConnecter">
 <label>Identifiant :</label><input type="text" name="pseudo" title="Le pseudo doit contenir uniquement des caractères alphanumériques" placeholder ="exemple: DarkMimol256"  pattern="^[a-zA-Z0-9@.]{2,10}$"required="required" autofocus="autofocus">
 <br>
