@@ -10,23 +10,24 @@
 
 
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Accueil.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
 
     <title>Document</title>
 </head>
 <body>
 
 
-
+<header>
     <h1>Accueil</h1>
        
        
-<header>
-    <h1>ENI-Encheres</h1>  
+
+    <h2>ENI-Encheres</h2>  
     
      
     
 
-
+<div>
     <% boolean isConnected = (boolean)session.getAttribute("connecte");%> 
     
     <% if(isConnected){ 
@@ -34,7 +35,7 @@
     	%>
     	 <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
     	 <a href="ServletRechercher">Rechercher quelqu'un</a>
-    <div>
+
     	<%@ include file="../html/deconnexion.html" %>
     	<%
     	

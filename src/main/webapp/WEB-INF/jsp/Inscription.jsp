@@ -4,12 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
 <title>Inscription</title>
 </head>
 <body>
+
+<header>
+	
 	<h1>Inscription</h1>
+	<h2>ENI-Encheres</h2>  
+	</header>
 	<form action="ServletInscription" method="post">
     <div>
+    
         <label for="pseudo">Pseudo:</label>
         <input type="text" id="pseudo" name="pseudo">
     </div>
