@@ -46,8 +46,7 @@
     
 
     </form>
-            <a href="ServletInscription">   value="S'inscrire"
->S'inscrire</a>
+            <a href="ServletInscription" value="S'inscrire">S'inscrire</a>
     <%
     
     }  %>
