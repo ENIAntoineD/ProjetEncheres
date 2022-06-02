@@ -55,7 +55,7 @@
 title="Créer votre inscription">
 <input name="btAnnuler" type="reset" value="Annuler"
 title="Annulez votre saisie">
-   <%@ include file="html/retourAccueil.html" %>
+   <%@ include file="../html/retourAccueil.html" %>
     
 </form>
 </body>

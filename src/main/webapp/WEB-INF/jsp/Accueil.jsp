@@ -35,7 +35,7 @@
     	 <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
     	 <a href="ServletRechercher">Rechercher quelqu'un</a>
     <div>
-    	<%@ include file="html/deconnexion.html" %>
+    	<%@ include file="../html/deconnexion.html" %>
     	<%
     	
     }
