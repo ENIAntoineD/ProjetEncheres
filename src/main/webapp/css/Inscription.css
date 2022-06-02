@@ -3,14 +3,22 @@
 
 
 
-form{
-	margin-block-start: 50px;
-	text-align: center;
+form {
 	display: flex;
-	
+	text-align: center;
+	justify-content: center;
 }
 
-form div{
-	display: inlign-block;
-	justify-content: space-around;
+
+.bouton{
+	order: 2;
+	align-self: flex-end;
+}
+
+.premier{
+	order: 1;
+}
+
+.deuxieme{
+	order: 3;
 }

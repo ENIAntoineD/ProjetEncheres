@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
  <link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
+ <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Inscription.css">
 <title>Inscription</title>
 </head>
 <body>
@@ -13,8 +14,14 @@
 	
 	<h1>Inscription</h1>
 	<h2>ENI-Encheres</h2>  
+	<div>
+	<%@ include file="../html/retourAccueil.html" %>
+	</div>
 	</header>
+	
 	<form action="ServletInscription" method="post">
+	<main>
+	<span class="premier">
     <div>
     
         <label for="pseudo">Pseudo:</label>
@@ -36,6 +43,8 @@
         <label for="prenom">Prénom:</label>
         <input type="text" id="prenom" name="Prenom">
     </div>
+    </span>
+    <span class="deuxieme">
     <div>
         <label for="adresse">Rue:</label>
         <input type="text" id="adresse" name="Adresse">
@@ -57,13 +66,14 @@
         <input type="tel" id="telephone" name="Telephone" pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$">
        
     </div>
+    </span>
+    </main>
     
 <input name="btCréer" type="submit" value="Créer"
-title="Créer votre inscription">
+title="Créer votre inscription" class="bouton">
 <input name="btAnnuler" type="reset" value="Annuler"
-title="Annulez votre saisie">
-   <%@ include file="../html/retourAccueil.html" %>
-    
+title="Annulez votre saisie" class="bouton">
+  
 </form>
 </body>
 </html>
