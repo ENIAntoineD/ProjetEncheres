@@ -9,7 +9,7 @@
 <title>Recherche</title>
 </head>
 <body>
-<%@ include file="html/retourAccueil.html" %>
+<%@ include file="../html/retourAccueil.html" %>
 <form action="ServletRechercher" method="post">
 
 <p>Rechercher quelqu'un :</p>

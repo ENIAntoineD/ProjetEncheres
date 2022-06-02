@@ -8,7 +8,6 @@
 </head>
 <body>
 <h1>Se connecter:</h1>
-
 <div>
 
 
@@ -22,6 +21,7 @@
 <a href="">Mot de passe oublié</a>
 
 </form>
+<p style="color: red"> Le nom d'utilisateur ou le mot de passe est incorrect    </p>
 
 <form action="ServletInscription" name="Creer">
 
@@ -29,10 +29,8 @@
 
 </form>
 
-<%@ include file="html/retourAccueil.html" %>
+<%@ include file="../html/retourAccueil.html" %>
 </div>
-
-
 
 </body>
 </html>
