@@ -4,11 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/connexionUtilisateur.css">
 <title>Connexion</title>
 </head>
 <body>
+<header>
+<div class="entete">
+<%@ include file="../html/retourAccueil.html" %>
+</div >
 <h1>Se connecter:</h1>
-
+<h2>Eni Enchères</h2>
+</header>
 <div>
 
 
@@ -18,7 +25,9 @@
 <label>Mot de passe :</label><input type="password" placeholder="Exemple : JesuistonPère25" name="motdepasse" required="required">
 <br>
 <button type="submit">Connexion</button>
-<input type="checkbox" name="souvenir">Se souvenir de moi<br>
+<div>
+<input type="checkbox" name="souvenir" class="souvenir">Se souvenir de moi
+</div>
 <a href="">Mot de passe oublié</a>
 
 </form>
@@ -29,7 +38,7 @@
 
 </form>
 
-<%@ include file="../html/retourAccueil.html" %>
+
 </div>
 
 

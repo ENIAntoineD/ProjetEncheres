@@ -13,12 +13,12 @@
 <body>
 
 <header>
-	
-	<h1>Inscription</h1>
-	<h2>ENI-Encheres</h2> 
-	<div>
+		<div class="entete">
 	 <%@ include file="../html/retourAccueil.html" %>
 	 </div>
+	<h1>Inscription</h1>
+	<h2>ENI-Encheres</h2> 
+
 	</header>
 	<form action="ServletInscription" method="post">
 	<main>
