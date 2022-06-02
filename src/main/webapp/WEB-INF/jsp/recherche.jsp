@@ -6,13 +6,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/recherche.css">
 <title>Recherche</title>
 </head>
 <body>
+<header>
+<h1>Rechercher quelqu'un</h1>
+<h2>Eni Enchères</h2>
+<div class="entete">
 <%@ include file="../html/retourAccueil.html" %>
+</div>
+</header>
 <form action="ServletRechercher" method="post">
 
-<p>Rechercher quelqu'un :</p>
+
 <label>Recherche </label><input type="search" name="recherche" placeholder="nom,prénom ou pseudo">
 <button type="submit">Rechercher</button>
 </form>
