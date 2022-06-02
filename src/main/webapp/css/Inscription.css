@@ -3,22 +3,34 @@
 
 
 
-form {
-	display: flex;
-	text-align: center;
-	justify-content: center;
-}
+/* form { */
+/* 	display: inline; */
+/* 	flex-direction: column; */
+/* 	align-items : center; */
+/* 	align-content: center; */
+/* } */
 
 
 .bouton{
-	order: 2;
-	align-self: flex-end;
+	order: 3;
 }
 
 .premier{
-	order: 1;
+	display: inline-block;
+	flex-direction: column;
+    text-align: center;
+    border: 1px solid rgba(219,161,219,255);
+    margin: 15px 15px 15px 15px;
+    border-radius: 5px;
+    justify-content: space-between;
 }
 
 .deuxieme{
-	order: 3;
+	display: inline-block;
+	flex-direction: column;
+    text-align: center;
+    border: 1px solid rgba(219,161,219,255);
+    margin: 15px 15px 15px 15px;
+    border-radius: 5px;
+    justify-content: space-between;
 }
