@@ -27,7 +27,7 @@
      
     
 
-<div>
+<div class="entete">
     <% boolean isConnected = (boolean)session.getAttribute("connecte");%> 
     
     <% if(isConnected){ 

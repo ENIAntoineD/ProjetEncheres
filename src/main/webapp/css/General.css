@@ -32,12 +32,19 @@ h2{
 	margin-bottom: 50px;
 }
 
-header div{
+header a {
+	text-decoration: none;
+	color: #3498DB;
+}
+
+.entete{
+	
 	margin-right: 20px;
 	text-align: right;
 	padding: top;
 	order: 3;
 	text-decoration: none;
 	color: #3498DB;
+	
 	
 }
