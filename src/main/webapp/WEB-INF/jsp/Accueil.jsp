@@ -41,12 +41,11 @@
     	
     }
     else   {    %> 
-    <a href="ServletConnectionUtilisateur" value=seConnecter > se connecter</a>
+    <a href="ServletConnectionUtilisateur" > se connecter</a>
     
     
 
-    </form>
-            <a href="ServletInscription" value="S'inscrire">S'inscrire</a>
+     <a href="ServletInscription" >S'inscrire</a>
     <%
     
     }  %>
