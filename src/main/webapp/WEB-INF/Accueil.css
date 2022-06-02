@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+*
+{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	
+}
+
 header {
 	position:fixed;
 	top:0;
