@@ -9,7 +9,7 @@
 
 
 
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/src/WEB-INF/css/Accueil.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/Accueil.css">
 
     <title>Document</title>
 </head>
