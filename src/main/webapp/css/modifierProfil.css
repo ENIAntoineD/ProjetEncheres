@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+form 
+{
+	
+	text-align: center;
+}
+
+section input{
+	display: flex;
+	align-content:flex-end;
+	
+	
+}
+section label{
+	display: flex;
+	align-content:flex-start;
+}
+
+.premier
+{
+	display : inline-block;
+	flex-direction: column;
+    text-align : center;
+    margin : 15px 15px 15px 15px;
+    justify-content : space-between;
+   
+    margin: 15px 15px 15px 15px;
+    
+}
+
+.deuxieme{
+	display: inline-block;
+	flex-direction: column;
+    text-align: center;
+    margin: 15px 15px 15px 15px;
+    
+    justify-content: space-between;
+   
+}
+
+.deuxieme div{
+	    margin-top: 11px;
+	
+}
+
+.button{
+	align-items: center;
+}
