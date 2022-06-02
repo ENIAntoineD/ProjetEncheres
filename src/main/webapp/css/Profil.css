@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+h1{
+	text-align: center;
+	
+}
+
+p{
+	text-align: center;
+	display : inline-block;
+	flex-direction: column;
+    text-align : center;
+    margin : 15px 15px 15px 15px;
+    justify-content : space-between;
+    
+}
+
+a{
+	display: flex;
+	align-content:flex-end;
+}
+

@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/General.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/Profil.css">
 <title>Profil</title>
 
 </head>
