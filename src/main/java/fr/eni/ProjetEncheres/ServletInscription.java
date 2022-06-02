@@ -31,7 +31,7 @@ public class ServletInscription extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Inscription.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Inscription.jsp");
 		rd.forward(request, response);
 	}
 
@@ -100,7 +100,7 @@ public class ServletInscription extends HttpServlet {
 		}
 			
 			// Si c'est bon redirection vers page d'accueil 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 			rd.forward(request, response);
 	}		
 

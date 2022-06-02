@@ -22,7 +22,7 @@ public class ServletDetailVente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/detailVente.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
 		rd.forward(request, response);
 		
 	}

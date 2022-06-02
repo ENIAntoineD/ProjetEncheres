@@ -47,7 +47,7 @@ public class ModifierProfil extends HttpServlet {
 			user = new Utilisateur(index, 23, request.getParameter("pseudo"), request.getParameter("Nom"), request.getParameter("Prenom"),request.getParameter("email"),
 					request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
 			userdao.updateProfil(user);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Profil.jsp");
 			rd.forward(request, response);
 			System.out.println("update");
 		}
@@ -62,12 +62,12 @@ public class ModifierProfil extends HttpServlet {
 	
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 			rd.forward(request, response);
 		}
 		
 	if(request.getParameter("btEnregistrer") == null) {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 	rd.forward(request, response);
 	}
 	
@@ -118,7 +118,7 @@ public class ModifierProfil extends HttpServlet {
 				userdao.deleteById(index);
 				session.setAttribute("connecte", false);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 				rd.forward(request, response);
 			}
 			 catch (BusinessException e) {
@@ -128,7 +128,7 @@ public class ModifierProfil extends HttpServlet {
 			}
 			
 			else{
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 			rd.forward(request, response);
 			}
 		}
@@ -139,11 +139,11 @@ public class ModifierProfil extends HttpServlet {
 					request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
 			if(userdao.VerificationMDP(index, user) == true) {
 			userdao.updateProfil(user);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp" + "?index=" + (String)session.getAttribute("pseudosession"));
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Profil.jsp" + "?index=" + (String)session.getAttribute("pseudosession"));
 			rd.forward(request, response);
 			}
 			else{
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modifierProfil.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 			rd.forward(request, response);
 			}
 		}

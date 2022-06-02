@@ -31,7 +31,7 @@ public class ServletAccueil extends HttpServlet {
 		
 		
 		if (request.getParameter("test") != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/test.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/test.jsp");
 			rd.forward(request, response);  
 		}
 		else {
@@ -43,7 +43,7 @@ public class ServletAccueil extends HttpServlet {
 			
 		session.setAttribute("connecte", isConnected);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 		rd.forward(request, response);
 		}
 	}

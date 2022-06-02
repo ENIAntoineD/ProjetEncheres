@@ -29,7 +29,7 @@ public class ServletUtilisateur extends HttpServlet {
 		Utilisateur user = null;
 		user = userdao.getid(index);
 		request.setAttribute("personne", user);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/utilisateur.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/utilisateur.jsp");
 		rd.forward(request, response);
 	}
 

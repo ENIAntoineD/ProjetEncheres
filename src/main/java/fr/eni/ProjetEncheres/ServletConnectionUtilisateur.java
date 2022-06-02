@@ -38,7 +38,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 					System.out.println("cookie");
 					session.setAttribute("connecte", true);
 					uneFois = true;
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 					rd.forward(request, response); 
 					
 				}
@@ -48,7 +48,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 			 if ( !uneFois )  {
 				 System.out.println("uneFois");
 				session.setAttribute("connecte", false);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexionUtilisateur.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexionUtilisateur.jsp");
 				rd.forward(request, response);
 			}
 		}
@@ -82,7 +82,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 				if (cookie.getName().equals("cookieDerniereConnexion")  ) {
 					session.setAttribute("connecte", true);
 					cookiesDerniereConnexion = true;
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 					rd.forward(request, response); 
 				}
 			}
@@ -94,7 +94,7 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 		
 		if (!testRegex) {
 			System.out.println("erreur pattern");
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/erreurConnexion.jsp");
 			rd.forward(request, response); 
 		}
 		
@@ -107,12 +107,12 @@ public class ServletConnectionUtilisateur extends HttpServlet {
 		}
 		
 		if (!connect && testRegex) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/erreurConnexion.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/erreurConnexion.jsp");
 			rd.forward(request, response); 
 		}
 		
 		else if(testRegex && connect && !cookiesDerniereConnexion  ){
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Accueil.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 			rd.forward(request, response); 
 		}
 		

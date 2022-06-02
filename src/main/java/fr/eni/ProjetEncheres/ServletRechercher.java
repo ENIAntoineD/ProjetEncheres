@@ -28,7 +28,7 @@ public class ServletRechercher extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/recherche.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/recherche.jsp");
 		rd.forward(request, response);
 		
 	}
@@ -52,7 +52,7 @@ public class ServletRechercher extends HttpServlet {
 			
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/recherche.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/recherche.jsp");
 		rd.forward(request, response);
 			
 		

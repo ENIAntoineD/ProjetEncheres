@@ -32,7 +32,7 @@ public class ServletProfil extends HttpServlet {
 		user = userdao.getid(index);
 		request.setAttribute("profil", user);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Profil.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Profil.jsp");
 		rd.forward(request, response);
 	}
 
