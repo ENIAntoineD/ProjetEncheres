@@ -41,32 +41,9 @@ public class ModifierProfil extends HttpServlet {
 		
 		request.setAttribute("monprofil", user);
 		
-		if(request.getParameter("btEnregistrer") != null) {
-			user = userdao.getid(index);
-			System.out.println(index);
-			user = new Utilisateur(index, 23, request.getParameter("pseudo"), request.getParameter("Nom"), request.getParameter("Prenom"),request.getParameter("email"),
-					request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
-			userdao.updateProfil(user);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Profil.jsp");
-			rd.forward(request, response);
-			System.out.println("update");
-		}
+
 		
-		if(request.getParameter("btSupprimer") != null) {
-			try {
-				HttpSession session = request.getSession();
-				userdao.deleteById(index);
-				session.setAttribute("connecte", false);
-			} catch (BusinessException e) {
-				e.printStackTrace();
-	
-			}
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
-			rd.forward(request, response);
-		}
-		
-	if(request.getParameter("btEnregistrer") == null) {
+	if(request.getParameter("btEnregistrer") == null && request.getParameter("btSupprimer") == null) {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 	rd.forward(request, response);
 	}
@@ -139,7 +116,7 @@ public class ModifierProfil extends HttpServlet {
 					request.getParameter("Telephone"), request.getParameter("Adresse"), request.getParameter("Cp"), request.getParameter("Ville"), request.getParameter("motdepasse"), false);
 			if(userdao.VerificationMDP(index, user) == true) {
 			userdao.updateProfil(user);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Profil.jsp" + "?index=" + (String)session.getAttribute("pseudosession"));
+			RequestDispatcher rd = request.getRequestDispatcher("ServletProfil?index=");
 			rd.forward(request, response);
 			}
 			else{

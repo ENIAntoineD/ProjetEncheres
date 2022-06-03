@@ -1,3 +1,4 @@
+<%@page import="fr.eni.ProjetEncheres.dal.jdbc.ArticlesDAOJdbcImpl"%>
 <%@page import="fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl"%>
 <%@page import="fr.eni.ProjetEncheres.bo.Utilisateur"%>
 <%@page import="fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAO"%>
@@ -114,7 +115,8 @@ enctype="multipart/form-data" method="post" class="categorie">
 	List<ArticleVendu> articles = (List<ArticleVendu>) session.getAttribute("afficher");
 	Utilisateur user = new Utilisateur();
 	UtilisateurDAOJdbcImpl userDAO = new UtilisateurDAOJdbcImpl();
-	
+	ArticlesDAOJdbcImpl articleDao = new ArticlesDAOJdbcImpl();
+	articles = articleDao.getArticles();
 	
 
 

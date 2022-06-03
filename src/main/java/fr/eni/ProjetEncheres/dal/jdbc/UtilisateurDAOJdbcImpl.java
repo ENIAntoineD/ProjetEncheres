@@ -338,8 +338,10 @@ public boolean VerificationMDP(int noUtilisateur, Utilisateur utilisateur) {
 		stmt =  cnx.prepareStatement(sqlSelectMDP);
 		stmt.setInt(1, noUtilisateur);
 		rs = stmt.executeQuery();
+		System.out.println(utilisateur.getMotDePasse());
+		
 		if (rs.next() && rs.getString(1).equals( utilisateur.getMotDePasse())) {
-			
+			System.out.println(rs.getString(1));
 			mdp = true;
 			
 			
