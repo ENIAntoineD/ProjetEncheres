@@ -12,6 +12,7 @@ public  class ArticleVendu {
 	private int miseAPrix;
 	private int prixVente;
 	private  boolean etatVente;
+	private int noUtilisateur;
 	
 	public ArticleVendu()
 	{
@@ -21,7 +22,7 @@ public  class ArticleVendu {
 	
 
 	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres, Date dateFinEncheres,
-			int miseAPrix, int prixVente, boolean etatVente) {
+			int miseAPrix, int prixVente, int noUtilisateur, boolean etatVente) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -29,6 +30,7 @@ public  class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
+		this.noUtilisateur = noUtilisateur;
 		this.etatVente = etatVente;
 	}
 	
@@ -37,7 +39,7 @@ public  class ArticleVendu {
 
 
 	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, boolean etatVente) {
+			Date dateFinEncheres, int miseAPrix, int prixVente, int noUtilisateur, boolean etatVente) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -46,6 +48,7 @@ public  class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
+		this.noUtilisateur = noUtilisateur;
 		this.etatVente = etatVente;
 	}
 
@@ -113,6 +116,18 @@ public  class ArticleVendu {
 
 	public void setEtatVente(boolean etatVente) {
 		this.etatVente = etatVente;
+	}
+
+
+
+	public int getNoUtilisateur() {
+		return noUtilisateur;
+	}
+
+
+
+	public void setNoUtilisateur(int noUtilisateur) {
+		this.noUtilisateur = noUtilisateur;
 	}
 
 

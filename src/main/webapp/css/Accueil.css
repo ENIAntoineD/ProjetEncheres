@@ -30,9 +30,16 @@ main section  {
 	align-content : flex-start;
 }
 
+section p {
+	padding-left: 50%;
+}
+
 main section div{
 	text-align : left;
 }
+
+
+
 .filtre {
 
 	text-align : left;
@@ -47,4 +54,18 @@ main section div{
 	text-align : left;
 	display : flex;
 	align-content : space-between;
+}
+
+.encheres{
+	
+	width : 30%;
+	margin : auto;
+	border:solid 0.5px;
+	
+}
+
+.cases{
+	text-align : left;
+	
+
 }

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ArticlesDAOJdbcImpl {
 	// requetes SQL pour les encheres
 	
 		private static final String sqlSelectByNoArticle = "";
-		private static final String sqlSelectAllArticles = "SELECT nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,no_utilisateur,no_categorie FROM ARTICLES_VENDUS ";
+		private static final String sqlSelectAllArticles = "SELECT no_article, nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,no_utilisateur,no_categorie FROM ARTICLES_VENDUS ";
 		private static final String sqlUpdateArticle = "";
 		private static final String sqlDeleteArticle = "";
 		private static final String sqlInsertArticle = "";
@@ -62,19 +63,18 @@ public class ArticlesDAOJdbcImpl {
 		public List<ArticleVendu> getArticles() {
 			List<ArticleVendu> liste = new ArrayList<>();
 			Connection cnx = null;
-			PreparedStatement stmt = null;
+			Statement stmt = null;
 			ResultSet rs = null;
 			ArticleVendu article = null;
 			
 			try {
 				cnx = ConnectionBDD.getConnection();
-				stmt =  cnx.prepareStatement(sqlSelectAllArticles);
-				rs = stmt.executeQuery();
+				stmt = cnx.createStatement();
+				rs = stmt.executeQuery(sqlSelectAllArticles);
 				while (rs.next()) {
-					article = new ArticleVendu(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getDate(4),
-							rs.ge, int prixVente, boolean etatVente);
+					article = new ArticleVendu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5),
+							rs.getInt(6),0, rs.getInt(7), false);
 					liste.add(article);
-					
 					
 				}
 			} catch (SQLException e) {

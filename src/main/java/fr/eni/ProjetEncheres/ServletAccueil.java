@@ -1,6 +1,8 @@
 package fr.eni.ProjetEncheres;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import fr.eni.ProjetEncheres.bo.ArticleVendu;
+import fr.eni.ProjetEncheres.dal.jdbc.ArticlesDAOJdbcImpl;
 
 /**
  * Servlet implementation class ServletAccueil
@@ -46,12 +51,29 @@ public class ServletAccueil extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
 		rd.forward(request, response);
 		}
+		
+		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+		
+		ArticlesDAOJdbcImpl articleDao = new ArticlesDAOJdbcImpl();
+		
+		//if (articleDao.getArticles() != null) {
+			
+			articles = articleDao.getArticles();
+			session.setAttribute("afficher",articles );
+			
+	//	}
+		if(request.getParameter("lien") != null) {
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
+		rd.forward(request, response);
+	}
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		
 	}
 

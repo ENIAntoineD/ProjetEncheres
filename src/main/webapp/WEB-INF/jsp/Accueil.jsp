@@ -1,3 +1,8 @@
+<%@page import="fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAOJdbcImpl"%>
+<%@page import="fr.eni.ProjetEncheres.bo.Utilisateur"%>
+<%@page import="fr.eni.ProjetEncheres.dal.jdbc.UtilisateurDAO"%>
+<%@page import="fr.eni.ProjetEncheres.bo.ArticleVendu"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -104,21 +109,34 @@ enctype="multipart/form-data" method="post" class="categorie">
 </div>
 
 </main>
-<img src="PCGamer.jpg"><%--image à ajouter --%>
-<p><a href="#">PC Gamer pour travailler</a></p>
-<p>Prix : 210 points<br>
-Fin de l'enchère : 10/08/2018
-</p>
-<p>Vendeur : jojo44</p>
-
-<img src="RocketStove.jpg"><%--image à ajouter --%>
-<p><a href="#">Rocket Stove pour riz et pâtes</a></p>
-<p>Prix : 185 points<br>
-Fin de l'enchère : 09/10/2018
-</p>
-<p>Vendeur : NineJea</p>
+<section class ="cases">
+	<% 
+	List<ArticleVendu> articles = (List<ArticleVendu>) session.getAttribute("afficher");
+	Utilisateur user = new Utilisateur();
+	UtilisateurDAOJdbcImpl userDAO = new UtilisateurDAOJdbcImpl();
+	
+	
 
 
+if(articles != null){
+		for(ArticleVendu article : articles){
+		%>
+
+		<div class="encheres">
+				<img src=""><%--image à ajouter --%>
+				<p><%=article.getNomArticle() %></p>
+				<p><%=article.getMiseAPrix() %></p>
+				<p>Fin de l'enchère : <%=article.getDateFinEncheres() %></p>
+				<% user = userDAO.getid(article.getNoUtilisateur());%>
+				<p>Vendeur : <a href="ServletUtilisateur?index=<%=article.getNoUtilisateur()%>"><%=user.getPseudo()%></a>
+				
+		</div>
+		
+		<%	
+		}
+	}
+		%>
+</section>
 
 </body>
 </html>
