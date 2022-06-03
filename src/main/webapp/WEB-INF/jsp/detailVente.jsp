@@ -28,9 +28,9 @@
 	%>
 	
 				<p>  <%=article.getNomArticle() %></p>
-				<p>  <%=article.getDescription() %></p>
-				<p>  <%=article.getPrixVente() %></p>
-				<p><%=article.getMiseAPrix() %></p>
+				<p> Description : <%=article.getDescription() %></p>
+				<p> Meilleur offre: <%=article.getPrixVente() %></p>
+				<p> Mise à prix :<%=article.getMiseAPrix() %></p>
 				<p>Fin de l'enchère : <%=article.getDateFinEncheres() %></p>
 				<% user = userDAO.getid(article.getNoUtilisateur());%>
 				<p>Vendeur : <a href="ServletUtilisateur?index=<%=article.getNoUtilisateur()%>"><%=user.getPseudo()%></a></p>

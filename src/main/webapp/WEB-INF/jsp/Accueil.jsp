@@ -39,6 +39,7 @@
     <% if(isConnected){ 
     	
     	%>
+    	<a href="ServletEncheres">Vendre un article</a>
     	 <a href="ServletProfil?index=<%= (String) session.getAttribute("pseudosession")  %>">Mon profil</a>
     	 <a href="ServletRechercher">Rechercher quelqu'un</a>
 
