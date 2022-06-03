@@ -126,7 +126,7 @@ if(articles != null){
 
 		<div class="encheres">
 				<img src=""><%--image à ajouter --%>
-				<p><%=article.getNomArticle() %></p>
+				<p> <a href="ServletDetailVente?index=<%=article.getNoArticle()%>"><%=article.getNomArticle() %></a></p>
 				<p><%=article.getMiseAPrix() %></p>
 				<p>Fin de l'enchère : <%=article.getDateFinEncheres() %></p>
 				<% user = userDAO.getid(article.getNoUtilisateur());%>

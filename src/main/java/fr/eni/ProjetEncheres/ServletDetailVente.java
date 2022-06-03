@@ -26,14 +26,14 @@ public class ServletDetailVente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
 		
+		ArticleVendu article = null;
 		ArticlesDAOJdbcImpl articleDao = new ArticlesDAOJdbcImpl();
 		
-		if (articleDao.getArticles() != null) {
+		if (articleDao.getArticleByID(Integer.parseInt(request.getParameter("index"))) != null) {
 			
-			articles = articleDao.getArticles();
-			request.setAttribute("afficher",articles );
+			article = articleDao.getArticleByID(Integer.parseInt(request.getParameter("index")));
+			request.setAttribute("detailarticle",article );
 			
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
