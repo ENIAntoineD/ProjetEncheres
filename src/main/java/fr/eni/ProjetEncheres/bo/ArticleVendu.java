@@ -2,7 +2,7 @@ package fr.eni.ProjetEncheres.bo;
 
 import java.util.Date;
 
-public abstract class ArticleVendu {
+public  class ArticleVendu {
 	
 	private int noArticle;
 	private String nomArticle;

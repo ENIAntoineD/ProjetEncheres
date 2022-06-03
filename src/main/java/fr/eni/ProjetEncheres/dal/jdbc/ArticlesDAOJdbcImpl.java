@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.ProjetEncheres.bll.BusinessException;
 import fr.eni.ProjetEncheres.bo.ArticleVendu;
@@ -13,7 +16,7 @@ public class ArticlesDAOJdbcImpl {
 	// requetes SQL pour les encheres
 	
 		private static final String sqlSelectByNoArticle = "";
-		private static final String sqlSelectAllArticles = "";
+		private static final String sqlSelectAllArticles = "SELECT nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,no_utilisateur,no_categorie FROM ARTICLES_VENDUS ";
 		private static final String sqlUpdateArticle = "";
 		private static final String sqlDeleteArticle = "";
 		private static final String sqlInsertArticle = "";
@@ -55,4 +58,56 @@ public class ArticlesDAOJdbcImpl {
 					e.printStackTrace();
 			}
 		}
+		
+		public List<ArticleVendu> getArticles() {
+			List<ArticleVendu> liste = new ArrayList<>();
+			Connection cnx = null;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			ArticleVendu article = null;
+			
+			try {
+				cnx = ConnectionBDD.getConnection();
+				stmt =  cnx.prepareStatement(sqlSelectAllArticles);
+				rs = stmt.executeQuery();
+				while (rs.next()) {
+					article = new ArticleVendu(rs.getString(1), rs.getString(2), rs.getDate(3), rs.getDate(4),
+							rs.ge, int prixVente, boolean etatVente);
+					liste.add(article);
+					
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			finally {
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (cnx != null) {
+					try {
+						cnx.close();
+					} catch (SQLException e) { 
+						e.printStackTrace();
+					}
+				}
+			
+			}
+			
+			return liste;
+		}
+		
+		
 }

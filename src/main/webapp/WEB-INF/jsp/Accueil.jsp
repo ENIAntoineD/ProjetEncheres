@@ -52,25 +52,31 @@
     </div>
   </header> 
   
-  <div>
+ 
   
   <h2 class="liste">Liste des enchères</h2>
+  <main>
+  <div class="rechercher">
+  	<input name="btRechercher" class="bouton" style="padding : 20px 60px;"type="submit" value="Rechercher"
+title="Effectuer une recherche">
+</div>
+<div class="filtre">
   <p>Filtres</p>
        
 
-<label for="site-search">Rechercher</label>
+
 <input type="search" id="site-search" name="q">
 
-	<input name="btRechercher" type="submit" value="Rechercher"
-title="Effectuer une recherche">
-</div>
+
+
+
 
 
 <form name="categories" action="#"
-enctype="multipart/form-data" method="post">
+enctype="multipart/form-data" method="post" class="categorie">
   <fieldset>
-    <legend>Catégories</legend>
-		<label for="categories">Catégories :</label>
+    
+		<label for="categories" >Catégories :</label>
 		<select name="categories" id="categories">
 			<option>Informatique</option>
 			<option>Ameublement</option>
@@ -81,7 +87,7 @@ enctype="multipart/form-data" method="post">
     </fieldset>
 </form>
 
-<form>
+<section>
 <div>
 	<input type="radio" name="Encheres" id="Achats"> Achats <br>
 	<input type="checkbox" id="Achats"> enchères ouvertes<br>
@@ -94,7 +100,10 @@ enctype="multipart/form-data" method="post">
 	<input type="checkbox" id="Achats"> ventes non débutées<br>
 	<input type="checkbox" id="Achats"> ventes terminées<br>
 </div>
+</section>
+</div>
 
+</main>
 <img src="PCGamer.jpg"><%--image à ajouter --%>
 <p><a href="#">PC Gamer pour travailler</a></p>
 <p>Prix : 210 points<br>
@@ -109,7 +118,7 @@ Fin de l'enchère : 09/10/2018
 </p>
 <p>Vendeur : NineJea</p>
 
-</form>
+
 
 </body>
 </html>

@@ -2,8 +2,49 @@
 
 body {
 	
-	align-self: center;
+	text-align: center;
+}
+
+fieldset
+{
+
+	border :none ;
+}
+label {
+	
 }
 
 
 
+
+main{
+	
+	display : flex;
+	align-content : center;
+	justify-content : center;
+	flex-direction : row-reverse;
+}
+
+main section  {
+	display : flex;
+	align-content : flex-start;
+}
+
+main section div{
+	text-align : left;
+}
+.filtre {
+
+	text-align : left;
+}
+
+.rechercher {
+	margin-top : 50px;
+	
+	text-align : left;
+}
+.categorie{
+	text-align : left;
+	display : flex;
+	align-content : space-between;
+}
